@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo de Cuidado de Enfermería en Situaciones de Bioterrorismo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="estilos.css">
+<style> 
+
+:root{
+  --bg:#664b72;
+  --content-bg:#F5EFE1;
+  --text:#333333;
+  --title:#7F6A88;
+  --btn:#365D60;
+  --alert:#8AC926;
+  --accent:#B05B5B;
+  --gold:#C4A35A;
+  --light-purple:#6B5878;
+  --dark-purple:#553764;
+  --parchment:#EDE3CB;
+  --parchment-dark:#D9CDAE;
+  --shadow:rgba(75,54,84,0.3);
+  --rojo:#C0392B;
+  --amarillo:#E67E22;
+  --verde:#27AE60;
+  --negro:#2C2C2C;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Merriweather',serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* TEXTURE OVERLAY */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:.5
+}
+
+/* NAVBAR */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(55, 38, 70, 0.97);
+  border-bottom:1px solid rgba(196,163,90,0.3);
+  backdrop-filter:blur(10px);
+}
+.nav-inner{display:flex;align-items:center;padding:.25rem .8rem;gap:1rem;max-width:1400px;margin:0 auto}
+.nav-logo{font-family:'Cinzel',serif;color:var(--gold);font-size:.75rem;white-space:nowrap;letter-spacing:.05em ; font-weight:700}
+.nav-links{display:flex;gap:.15rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  font-family:'Montserrat',serif;font-size:.65rem;font-weight:100;color:rgba(196,163,90,0.8);
+  text-decoration:none;padding:.2rem .4rem;border-radius:4px;
+  transition:.2s;white-space:nowrap;letter-spacing:.04em
+}
+.nav-links a:hover{color:var(--gold);background:rgba(196,163,90,0.1)}
+.nav-burger{display:none;background:none;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:4px;cursor:pointer;font-size:1rem}
+.tl-img{
+  width: 900px;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+  border-radius: 10px;
+}
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(-45deg, #58306e, #4B3654, #385c5e, #573666);
+  background-size: 400% 400%;
+  position:relative;
+  overflow:hidden;
+  padding:3rem 2rem 4rem;
+}
+
+.hero-content{position:relative;text-align:center;max-width:900px;z-index:1}
+.hero-badge{
+  display:inline-block;font-family:'Montserrat',serif;font-size:.8rem;letter-spacing:.15em;
+  color:var(--gold);border:1px solid rgba(196,163,90,0.4);padding:.4rem 1.2rem;
+  border-radius:20px;margin-bottom:0.5rem;background:rgba(196,163,90,0.08); font-weight: 50; 
+}
+.hero-title{
+  font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.6rem);
+  color:#F5EFE1;line-height:1.2;margin-bottom:0rem;
+  text-shadow:0 2px 20px rgba(0,0,0,0.5)
+}
+.hero-title span{color:var(--gold)}
+.hero-subtitle{font-family:'Montserrat', serif !important;
+  color:rgba(245,239,225,0.75);
+  font-size:0.9rem !important;
+  margin-bottom:0.5rem;
+  font-weight:300 !important;}
+.hero-authors{color:rgba(196,163,90,0.7);font-size:.9rem;letter-spacing:.05em;margin-bottom:1rem;font-family:'Montserrat',serif; font-weight: 200}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  font-family:'Montserrat',serif;letter-spacing:0em;font-size:.8rem;
+  background:var(--btn);color:#F5EFE1;border:none;padding:.7rem 2rem;
+  border-radius:4px;cursor:pointer;transition:.1s;text-decoration:none;display:inline-block
+}
+.btn-primary:hover{background:#4A7A7D;transform:translateY(-2px);box-shadow:0 8px 25px rgba(54,93,96,0.4)}
+.btn-secondary{
+  font-family:'Montserrat',serif;letter-spacing:.08em;font-size:.8rem;
+  background:transparent;color:var(--gold);border:1px solid rgba(196,163,90,0.5);
+  padding:.7rem 2rem;border-radius:6px;cursor:pointer;transition:.3s;text-decoration:none;display:inline-block
+}
+.btn-secondary:hover{background:rgba(196,163,90,0.1);transform:translateY(-2px)}
+.hero-title-img{
+  width: 100%;
+  max-width: 1200px;
+  display: block;
+  margin-bottom: 0rem;
+}
+
+/* QUICK INDEX */
+.quick-index{
+  display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;
+  margin-top:2.5rem;padding-top:2rem;
+  border-top:1px solid rgba(196,163,90,0.2)
+}
+.qi-chip{
+  font-family:'Montserrat',serif;font-size:.6rem;letter-spacing:.06em;
+  color:rgba(245,239,225,0.6);padding:.35rem .8rem;
+  border:1px solid rgba(196,163,90,0.2);border-radius:20px;
+  text-decoration:none;transition:.2s;background:rgba(75,54,84,0.4)
+}
+.qi-chip:hover{color:var(--gold);border-color:rgba(196,163,90,0.6);background:rgba(75,54,84,0.7)}
+
+/* SECTION WRAPPER */
+.section{padding:5rem 0;position:relative}
+.section:nth-child(odd){background:var(--content-bg)}
+.section:nth-child(even){background:var(--parchment)}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+.section .container{
+  background: rgba(245, 239, 225, 0.75);
+  border: 1px solid rgba(196, 163, 90, 0.25);
+  border-radius: 18px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  backdrop-filter: blur(12px);
+} 
+#deu .container{
+  background: rgba(58, 42, 74, 0.85);
+  border: 1px solid rgba(196, 163, 90, 0.3);
+  color: #F5EFE1;
+}
+#sec-buscar .container{
+  background: rgba(42, 28, 54, 0.9);
+  border: 1px solid rgba(196, 163, 90, 0.35);
+  color: #F5EFE1;
+}
+.section::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:0.1;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Ctext x='50%25' y='50%25' font-size='80' text-anchor='middle' dominant-baseline='middle'%3E%E2%98%A3%3C/text%3E%3C/svg%3E");
+
+  background-size:150px 150px;
+
+  animation:moverBio 12s linear infinite;
+}
+@keyframes moverBio{
+  from { background-position: 0 0; }
+  to { background-position: 0 200px; }
+}
+/* SECTION HEADER */
+.sec-header{margin-bottom:2rem;text-align:center}
+.sec-number{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;color:var(--title);margin-bottom:.5rem}
+.sec-title{font-family:'Cinzel',serif;font-size:clamp(1.4rem,3vw,2rem);color:var(--dark-purple);margin-bottom:.8rem}
+.sec-divider{width:60px;height:2px;background:var(--gold);margin:.8rem auto;border-radius:2px}
+.sec-intro{font-family:'Montserrat',serif;color:#555;font-size:.95rem;max-width:2000px; margin:0 auto 0.2rem auto;line-height:1.6}
+
+/* TIP BOX */
+.tip-box{
+  background:linear-gradient(135deg,rgba(54,93,96,0.1),rgba(54,93,96,0.05));
+  border-left:8px solid var(--btn);border-radius:0 5px 5px 0; margin-top:0 !important;
+  padding:1rem 1.5rem;margin:0.2rem .5rem .5rem .5rem;
+}
+.tip-box .tip-label{font-family:'Montserrat',serif;font-size:.9rem;letter-spacing:.1em;color:var(--btn);margin-bottom:0.2rem;margin-top:0 !important;}
+.tip-box p{font-family:'Montserrat',serif;font-size:.9rem;color:#444;line-height:1.7}
+
+/* ALERT BOX */
+.alert-box{
+  background:rgba(138,201,38,0.1);border:1px solid rgba(138,201,38,0.5);
+  border-radius:8px;padding:1rem 1.5rem;margin:1.5rem 0
+}
+.alert-box .alert-label{font-family:'Montserrat',serif;font-size:.9rem;letter-spacing:.1em;color:#5A8C0A;margin-bottom:.4rem}
+.alert-box p{font-family:'Montserrat',serif;font-size:.9rem;color:#3A5C08;line-height:1.7}
+
+/* CRITICAL BOX */
+.critical-box{
+  background:rgba(176,91,91,0.08);border:1px solid rgba(176,91,91,0.4);
+  border-radius:8px;padding:1rem 1.5rem;margin:1.5rem 0
+}
+.critical-label{font-family:'Montserrat',serif;font-size:.8rem;letter-spacing:.1em;color:var(--accent);margin-bottom:.4rem}
+
+/* CARDS GRID */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0}
+.card{
+  background:#fff;border-radius:10px;padding:1.5rem;
+  border:1px solid rgba(127,106,136,0.15);
+  box-shadow:0 4px 20px rgba(75,54,84,0.08);
+  transition:.3s
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(75,54,84,0.15)}
+.card-icon{font-size:2rem;margin-bottom:.8rem} .card-icon i.icon-caliente{
+  color: #e74c3c !important;
+}
+
+.card-icon i.icon-tibia{
+  color: #f39c12 !important;
+}
+
+.card-icon i.icon-fria{
+  color: #27ae60 !important; 
+}
+ .card-icon i.icon-agua{
+  color: #3498db !important;
+}
+
+.card-icon i.icon-salud{
+  color: #e74c3c !important;
+}
+
+.card-icon i.icon-abrigo{
+  color: #f39c12 !important;
+}
+
+.card-icon i.icon-donacion{
+  color: #27ae60 !important;
+}
+.card-title{font-family:'Montserrat',serif;font-size:.95rem;color:var(--dark-purple);margin-bottom:.6rem}
+.card-text{font-family:'Montserrat',serif;font-size:.85rem;color:#555;line-height:1.7}
+
+/* ACCORDION */
+.accordion{border:1px solid rgba(127,106,136,0.2);border-radius:8px;overflow:hidden;margin:1rem 0}
+.acc-header{
+  width:100%;text-align:left;background:rgba(127,106,136,0.08);border:none;
+  padding:1rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;
+  align-items:center;font-family:'Montserrat',serif;font-size:.85rem;color:var(--dark-purple);
+  transition:.2s
+}
+.acc-header:hover{background:rgba(127,106,136,0.15)}
+.acc-arrow{transition:.3s;font-size:1rem;color:var(--title)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.acc-body.open{max-height:4000px}
+.acc-content{padding:1.2rem 1.5rem;font-family:'Montserrat',serif;font-size:.8rem;line-height:1.8;color:#444;border-top:1px solid rgba(127,106,136,0.1)}
+
+/* TABLE */
+.proto-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-family:'Montserrat',serif;font-size:.85rem}
+.proto-table th{background:var(--dark-purple);color:var(--gold);padding:.8rem 1rem;text-align:left;font-family:'Montserrat',serif;font-size:.75rem;letter-spacing:.06em}
+.proto-table td{padding:.7rem 1rem;border-bottom:1px solid rgba(127,106,136,0.15);vertical-align:top;color:#444}
+.proto-table tr:nth-child(even) td{background:rgba(127,106,136,0.04)}
+.proto-table tr:hover td{background:rgba(196,163,90,0.06)}
+
+/* ========== DEU CIRCLE ========== */
+#deu{background:linear-gradient(135deg,#2E1F3D,#3A2A4A,#1E3535)}
+#deu .sec-title{color:#F5EFE1}
+#deu .sec-number{color:rgba(196,163,90,0.8)}
+#deu .sec-intro{color:rgba(245,239,225,0.7)}
+.deu-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:3rem}
+@media(max-width:768px){.deu-wrap{grid-template-columns:1fr}}
+.deu-circle-container{position:relative;width:500px;height:500px;margin:0 auto}
+.deu-svg{width:100%;height:100%;cursor:pointer}
+.deu-phase-btn{cursor:pointer;transition:.3s}
+.deu-phase-btn:hover .phase-arc{opacity:.85}
+.deu-phase-btn.active .phase-arc{filter:brightness(1.2)}
+.deu-center-text{font-family:'Montserrat',serif;fill:#F5EFE1;text-anchor:middle;dominant-baseline:middle}
+.deu-detail{animation:fadeSlide .4s ease}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.phase-card{
+  background:rgba(245,239,225,0.07);border:1px solid rgba(196,163,90,0.2);
+  border-radius:12px;padding:1.5rem;min-height:350px
+}
+.phase-card h3{font-family:'Montserrat',serif;color:var(--gold);margin-bottom:1rem;font-size:1.1rem}
+.phase-card h4{font-family:'Montserrat',serif;color:rgba(245,239,225,0.8);font-size:.75rem;letter-spacing:.1em;margin:1rem 0 .5rem}
+.phase-card p,.phase-card li{font-family:'Montserrat',serif;color:rgba(245,239,225,0.75);font-size:.85rem;line-height:1.7}
+.phase-card ul{padding-left:1.2rem}
+.phase-card li{margin:.3rem 0}
+.phase-pill{
+  display:inline-block;padding:.25rem .75rem;border-radius:20px;
+  font-family:'Montserrat',serif;font-size:.6rem;letter-spacing:.08em;margin:.2rem
+} .deu-svg text{
+  pointer-events: none;
+}
+
+/* ========== TRIAGE ========== */
+.triage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2rem 0}
+@media(max-width:700px){.triage-grid{grid-template-columns:repeat(2,1fr)}}
+.triage-card{
+  border-radius:10px;padding:1.5rem 1rem;text-align:center;cursor:pointer;
+  transition:.3s;position:relative;overflow:hidden
+}
+.triage-card:hover{transform:translateY(-5px);box-shadow:0 12px 30px rgba(0,0,0,0.2)}
+.triage-card.rojo{background:#C0392B;color:#fff}
+.triage-card.amarillo{background:#E67E22;color:#fff}
+.triage-card.verde{background:#27AE60;color:#fff}
+.triage-card.negro{background:#2C2C2C;color:#fff}
+.triage-code{font-size:2.5rem;margin-bottom:.5rem}
+.triage-name{font-family:'Montserrat',serif;font-size:.9rem;letter-spacing:.06em}
+.triage-detail{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);
+  z-index:2000;align-items:center;justify-content:center;padding:2rem
+}
+.triage-detail.show{display:flex}
+.triage-modal{
+  background:var(--content-bg);border-radius:12px;padding:2rem;max-width:550px;
+  width:100%;position:relative;max-height:80vh;overflow-y:auto
+}
+.triage-modal h3{font-family:'Montserrat',serif;font-size:1.3rem;margin-bottom:1rem}
+.triage-modal p,.triage-modal li{font-family:'Montserrat',serif;font-size:.9rem;line-height:1.8;color:#444}
+.triage-modal ul{padding-left:1.5rem;margin:.5rem 0}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:1px solid #999;border-radius:4px;cursor:pointer;padding:.25rem .6rem;font-size:.9rem;color:#555}
+
+/* START ALGORITHM */
+.start-flow{display:flex;flex-direction:column;gap:0;margin:2rem 0}
+.start-step{
+  background:#fff;border:1px solid rgba(127,106,136,0.2);padding:1rem 1.5rem;
+  border-radius:8px;margin:.5rem 0;display:flex;align-items:center;gap:1rem;
+  box-shadow:0 2px 10px rgba(75,54,84,0.06)
+}
+.start-step-num{
+  width:36px;height:36px;border-radius:50%;background:var(--dark-purple);
+  color:var(--gold);display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',serif;font-size:.8rem;flex-shrink:0
+}
+.start-step-text{font-family:'Montserrat',serif;font-size:.88rem;color:#444;flex:1;line-height:1.6}
+.start-arrow{text-align:center;color:var(--title);font-size:1.2rem;margin:-.2rem 0}
+
+/* SCENARIOS */
+.scenario-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.sc-tab{
+  font-family:'Montserrat',serif;font-size:.7rem;letter-spacing:.06em;
+  padding:.5rem 1.2rem;border:1px solid rgba(127,106,136,0.3);border-radius:20px;
+  background:transparent;cursor:pointer;color:var(--dark-purple);transition:.2s
+} i{
+  color: inherit;
+}
+
+.icon-antrax{ color: #2ecc71 !important; }
+.icon-hemorragia{ color: #e74c3c !important; }
+.icon-toxina{ color: #2c3e50 !important; }
+.icon-panico{ color: #f39c12 !important; }
+.sc-tab:hover{background:var(--dark-purple);color:var(--gold)}
+.sc-tab.active{background:var(--dark-purple);color:var(--gold);border-color:var(--dark-purple)}
+.scenario-panel{display:none}
+.scenario-panel.show{display:block;animation:fadeSlide .3s ease}
+
+/* INSTITUTIONS */
+.inst-tabs{display:flex;gap:.5rem;margin-bottom:2rem}
+.inst-tab{
+  font-family:'Montserrat',serif;font-size:.7rem;letter-spacing:.06em;
+  padding:.5rem 1.2rem;border:1px solid rgba(127,106,136,0.3);border-radius:4px;
+  background:transparent;cursor:pointer;color:var(--dark-purple);transition:.2s
+}
+.inst-tab.active{background:var(--btn);color:#fff;border-color:var(--btn)}
+.inst-panel{display:none}
+.inst-panel.show{display:block}
+.inst-card{
+  background:#fff;border-radius:8px;padding:1rem 1.2rem;margin:.7rem 0;
+  border-left:3px solid var(--btn);box-shadow:0 2px 10px rgba(75,54,84,0.06);
+  display:flex;align-items:flex-start;gap:1rem
+}
+.inst-icon{font-size:1.5rem;flex-shrink:0}
+.inst-name{font-family:'Montserrat',serif;font-size:.85rem;color:var(--dark-purple);margin-bottom:.3rem}
+.inst-role{font-family:'Montserrat',serif;font-size:.82rem;color:#555;line-height:1.6}
+.inst-contact{font-family:'Montserrat',serif;font-size:.7rem;color:var(--btn);margin-top:.3rem}
+
+/* CHECKLIST */
+.checklist-wrap{margin:1.5rem 0}
+.checklist-group{margin:1.5rem 0}
+.checklist-group-title{font-family:'Montserrat',serif;font-size:.85rem;color:var(--dark-purple);margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:1px solid rgba(127,106,136,0.2)}
+.check-item{display:flex;align-items:flex-start;gap:.8rem;padding:.5rem 0;border-bottom:1px solid rgba(127,106,136,0.08);cursor:pointer}
+.check-item input[type=checkbox]{width:18px;height:18px;cursor:pointer;flex-shrink:0;margin-top:.1rem;accent-color:var(--btn)}
+.check-label{font-family:'Montserrat',serif;font-size:.85rem;color:#444;line-height:1.6;cursor:pointer}
+.check-item.checked .check-label{text-decoration:line-through;color:#999}
+.checklist-progress{margin:1rem 0}
+.progress-bar-wrap{background:rgba(127,106,136,0.15);border-radius:10px;height:8px;margin:.5rem 0}
+.progress-bar{height:8px;border-radius:10px;background:linear-gradient(90deg,var(--btn),var(--alert));transition:.4s}
+.progress-text{font-family:'Montserrat',serif;font-size:.72rem;color:var(--title)}
+
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:2rem}
+.search-input{
+  width:100%;padding:1rem 1rem 1rem 3rem;border:1px solid rgba(127,106,136,0.3);
+  border-radius:8px;font-family:'Montserrat',serif;font-size:.9rem;
+  background:#fff;color:var(--text);transition:.2s
+}
+.search-input:focus{outline:none;border-color:var(--btn);box-shadow:0 0 0 3px rgba(54,93,96,0.1)}
+.search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.1rem;color:var(--title)}
+.search-results{margin-top:1rem}
+.search-result-item{
+  background:#fff;border-radius:6px;padding:.8rem 1.2rem;margin:.5rem 0;
+  border-left:3px solid var(--btn);cursor:pointer;transition:.2s
+}
+.search-result-item:hover{background:rgba(54,93,96,0.05)}
+.sr-section{font-family:'Montserrat',serif;font-size:.65rem;letter-spacing:.1em;color:var(--btn);margin-bottom:.2rem}
+.sr-text{font-family:'Montserrat',serif;font-size:.85rem;color:#444}
+mark{background:rgba(138,201,38,0.3);border-radius:2px;padding:0 2px}
+
+/* KEY POINTS */
+.key-points{background:linear-gradient(135deg,rgba(54,93,96,0.08),rgba(127,106,136,0.08));border-radius:10px;padding:1.5rem;margin:2rem 0;border:1px solid rgba(54,93,96,0.2)}
+.key-points-title{font-family:'Montserrat',serif;font-size:.8rem;letter-spacing:.12em;color:var(--btn);margin-bottom:1rem}
+.key-point{display:flex;align-items:flex-start;gap:.8rem;margin:.6rem 0}
+.kp-icon{color:var(--alert);font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.kp-text{font-family:'Montserrat',serif;font-size:.85rem;color:#444;line-height:1.6}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem;margin:2rem 0}
+.timeline::before{content:'';position:absolute;left:.5rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),var(--title))}
+.tl-item{position:relative;margin:1.5rem 0}
+.tl-dot{position:absolute;left:-1.75rem;top:.3rem;width:14px;height:14px;border-radius:50%;background:var(--gold);border:2px solid var(--content-bg)}
+.tl-period{font-family:'Montserrat',serif;font-size:.8rem;letter-spacing:.08em;color:var(--title)}
+.tl-text{font-family:'Montserrat',serif;font-size:.88rem;color:#444;line-height:1.7;margin-top:.3rem}
+
+/* AGENTS TABLE */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
+.agent-card{border-radius:10px;padding:1.2rem;border:1px solid}
+.agent-A{background:rgba(192,57,43,0.08);border-color:rgba(192,57,43,0.3)}
+.agent-B{background:rgba(230,126,34,0.08);border-color:rgba(230,126,34,0.3)}
+.agent-C{background:rgba(127,106,136,0.08);border-color:rgba(127,106,136,0.3)}
+.agent-cat{font-family:'Montserrat',serif;font-size:.8rem;letter-spacing:.1em;margin-bottom:.6rem;  font-weight: 600;}
+.agent-A .agent-cat{color:#C0392B}
+.agent-B .agent-cat{color:#E67E22}
+.agent-C .agent-cat{color:var(--title)}
+.agent-examples{font-family:'Montserrat',serif;font-size:.83rem;color:#242424;line-height:1.6}
+
+/* FLOAT BTN */
+#toTop{
+  position:fixed;bottom:2rem;right:2rem;background:var(--dark-purple);
+  color:var(--gold);border:1px solid rgba(196,163,90,0.4);border-radius:50%;
+  width:48px;height:48px;display:none;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1.2rem;z-index:999;transition:.3s;
+  box-shadow:0 4px 20px rgba(0, 0, 0, 0.3)
+}
+#toTop.show{display:flex}
+#toTop:hover{background:var(--btn);transform:translateY(-3px)}
+
+/* SIDEBAR TOC */
+#toc{
+  position:fixed;left:0;top:50%;transform:translateY(-50%);
+  background:rgba(42,28,54,0.95);border-right:1px solid rgba(196,163,90,0.2);
+  padding:.5rem 0;z-index:800;max-height:80vh;overflow-y:auto;
+  border-radius:0 8px 8px 0;width:14px;transition:.3s;scrollbar-width:none
+}
+#toc:hover{width:220px}
+#toc::-webkit-scrollbar{display:none}
+.toc-item{display:block;font-family:'Montserrat',serif;font-size:.6rem;letter-spacing:.05em;
+  color:rgba(196,163,90,0.7);text-decoration:none;padding:.4rem .8rem;
+  white-space:nowrap;overflow:hidden;transition:.2s}
+.toc-item:hover{color:var(--gold);background:rgba(196,163,90,0.1)}
+
+/* FOOTER */
+#footer{background:var(--dark-purple);padding:3rem 2rem;text-align:center}
+.footer-logo{font-family:'Montserrat',serif;color:var(--gold);font-size:1.2rem;margin-bottom:.5rem}
+.footer-sub{font-family:'Montserrat',serif;color:rgba(245,239,225,0.5);font-size:.8rem;margin:.3rem 0}
+
+/* MOBILE NAV */
+#mobile-menu{display:none;position:fixed;inset:0;background:rgba(42,28,54,0.98);z-index:1500;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+#mobile-menu.open{display:flex}
+#mobile-menu a{font-family:'Montserrat',serif;font-size:.9rem;color:var(--gold);text-decoration:none;padding:.5rem}
+#mobile-close{background:none;border:1px solid var(--gold);color:var(--gold);padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-family:'Cinzel',serif;margin-top:1rem}
+
+/* PHASE HIGHLIGHT */
+.phase-highlight{
+  display:inline-block;padding:.2rem .7rem;border-radius:4px;font-family:'Montserrat',serif;
+  font-size:.65rem;letter-spacing:.08em;
+}
+.ph-mit{background:rgba(39,174,96,0.15);color:#1A6B3A;border:1px solid rgba(39,174,96,0.3)}
+.ph-pre{background:rgba(230,126,34,0.15);color:#8C4A0A;border:1px solid rgba(230,126,34,0.3)}
+.ph-res{background:rgba(192,57,43,0.15);color:#7A1F14;border:1px solid rgba(192,57,43,0.3)}
+.ph-rec{background:rgba(54,93,96,0.15);color:#1A4547;border:1px solid rgba(54,93,96,0.3)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  #toc{display:none}
+  .deu-wrap{grid-template-columns:1fr}
+  .triage-grid{grid-template-columns:repeat(2,1fr)}
+  .inst-tabs{flex-direction:column}
+} 
+#hero .hero-subtitle{
+  font-family:'Montserrat', serif !important;
+  font-size:0.8rem !important;
+  font-weight:300 !important;
+  color:rgba(245,239,225,0.65) !important;
+  margin-bottom:0.5rem !important;
+}
+.fa-solid{
+  color:#563971;
+  margin-right:8px;
+} 
+.tab-section{
+  display:none;
+}
+
+.tab-section.active{
+  display:block;
+}
+</style>
+</head>
+<body>
+<nav id="toc" aria-label="Tabla de contenido">
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-buscar')">
+    <i class="fa-solid fa-magnifying-glass"></i> Buscar
+  </a>
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('hero')">Inicio</a>
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-triage')">Triage START</a>
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-epistemologia')">Marco Epistemológico</a>
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-instituciones')">Instituciones de respuesta</a>
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-humanitaria')">Atención Humanitaria</a>
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-prehospitalaria')">Atención Prehospitalaria</a>
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-suministros')">Gestión de Suministros</a>
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-evacuacion')">Evacuación</a>
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-refugios')">Refugios</a>
+
+  <a class="toc-item" href="javascript:void(0)" onclick="showTab('sec-etica')">Ética y Bioética</a>
+
+</nav>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">Protocolo · Bioterrorismo</div>
+    <div class="nav-links">
+      <a href="javascript:void(0)" onclick="showTab('hero')">Inicio</a>
+      <a href="javascript:void(0)" onclick="showTab('sec-concepto')">Concepto</a>
+<a href="javascript:void(0)" onclick="showTab('sec-agentes')">Agentes</a>
+<a href="javascript:void(0)" onclick="showTab('sec-norma')">Normativa</a>
+<a href="javascript:void(0)" onclick="showTab('deu')">Círculo DEU</a>
+<a href="javascript:void(0)" onclick="showTab('sec-rol')">Rol Enfermería</a>
+<a href="javascript:void(0)" onclick="showTab('sec-escenarios')">Escenarios</a>
+<a href="javascript:void(0)" onclick="showTab('sec-checklist')">Checklist</a>
+<a href="javascript:void(0)" onclick="showTab('sec-buscar')"> <i class="fa-solid fa-magnifying-glass"></i>Buscar</a>
+    </div>
+    <button class="nav-burger" onclick="document.getElementById('mobile-menu').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+  <a href="#sec-concepto" onclick="closeMobile()">Concepto y Antecedentes</a>
+  <a href="#sec-agentes" onclick="closeMobile()">Agentes Biológicos</a>
+  <a href="#sec-norma" onclick="closeMobile()">Normatividad</a>
+  <a href="#sec-epistemologia" onclick="closeMobile()">Marco Epistemológico</a>
+  <a href="#deu" onclick="closeMobile()">Círculo DEU</a>
+  <a href="#sec-rol" onclick="closeMobile()">Rol Enfermería CIE I</a>
+  <a href="#sec-triage" onclick="closeMobile()">Triage START</a>
+  <a href="#sec-escenarios" onclick="closeMobile()">Escenarios Clínicos</a>
+  <a href="#sec-instituciones" onclick="closeMobile()">Instituciones</a>
+  <a href="#sec-humanitaria" onclick="closeMobile()">At. Humanitaria</a>
+  <a href="#sec-prehospitalaria" onclick="closeMobile()">Prehospitalaria</a>
+  <a href="#sec-suministros" onclick="closeMobile()">Suministros</a>
+  <a href="#sec-evacuacion" onclick="closeMobile()">Evacuación</a>
+  <a href="#sec-refugios" onclick="closeMobile()">Refugios Transitorios</a>
+  <a href="#sec-etica" onclick="closeMobile()">Derecho y Ética</a>
+  <a href="#sec-checklist" onclick="closeMobile()">Checklist CIE</a>
+  <a href="#sec-buscar" onclick="closeMobile()"><i class="fa-solid fa-magnifying-glass"></i> Buscador</a>
+  <button id="mobile-close" onclick="closeMobile()">✕ Cerrar</button>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="section tab-section active">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Protocolo Académico-Operativo · Nivel I CIE</div>
+    <img src="imagenes/titulo-principal.png" alt="Protocolo de Cuidado de Enfermería en Situaciones de Bioterrorismo" class="hero-title-img">
+    <p class="hero-subtitle">Imagen generada con IA. Gemini 2026</p>
+    <p class="hero-authors">Medidas de Emergencia, Contención y Respuesta Humanitaria</p>
+    <div class="hero-btns">
+      <a href="javascript:void(0)" class="btn-primary" onclick="showTab('deu')">
+  Explorar Protocolo
+</a>
+
+<a href="javascript:void(0)" class="btn-secondary" onclick="showTab('sec-triage')">
+  Triage START Interactivo →
+</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 1. CONCEPTO ======= -->
+<section class="section tab-section active" id="sec-concepto">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 01</div>
+    <h2 class="sec-title">Concepto y Antecedentes del Bioterrorismo</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">Comprensión histórica, definición operativa y alcance del bioterrorismo como amenaza a la salud pública global.</p>
+  </div>
+  <div class="tip-box">
+    <div class="tip-label">💡 Definición Operativa (CDC/OMS)</div>
+    <p>El bioterrorismo es el <strong>uso intencional de agentes biológicos</strong> (bacterias, virus, toxinas) como armas para provocar enfermedades masivas, muerte y pánico en la población civil, con fines políticos, ideológicos o de terror. Se distingue de las epidemias naturales por su <em>carácter deliberado y premeditado.</em></p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-flask"></i></div>
+      <div class="card-title"> Definición Esencial</div>
+      <div class="card-text">Uso deliberado de microorganismos o toxinas para causar daño a personas, animales o ecosistemas. Aprovecha el poder de los organismos infecciosos para producir efectos adversos similares a epidemias, pero con causa intencional y fines de intimidación.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-user-group"></i></div>
+      <div class="card-title">¿A quiénes afecta?</div>
+      <div class="card-text"><strong>Personas</strong> (enfermedades y mortalidad), </strong>animales y ecosistemas</strong> (seguridad alimentaria), </strong> sistemas de salud</strong>  (desbordamiento institucional) y la sociedad en general (desestabilización política, social y económica).</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div class="card-title">Diferencia con Epidemia</div>
+      <div class="card-text">El bioterrorismo es deliberado y premeditado. Busca intimidación y terror, no simplemente propagación. Su detección requiere vigilancia epidemiológica especializada que identifique patrones inusuales.</div>
+    </div>
+  </div>
+
+  <div class="accordion" id="acc-historia">
+    <button class="acc-header" onclick="toggleAcc('hist-body','hist-arrow')">
+      <span><i class="fa-solid fa-scroll"></i> Antecedentes Históricos del Bioterrorismo</span>
+      <span class="acc-arrow" id="hist-arrow">▼</span>
+    </button>
+    <div class="acc-body" id="hist-body">
+      <div class="acc-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Antigüedad (Persas, Griegos, Romanos)</div>
+            <div class="tl-text">Uso de cadáveres y restos animales para contaminar fuentes de agua en poblaciones enemigas.</div>
+                        <img src="imagenes/antiguedad.png" alt="Antigüedad bioterrorismo" class="tl-img">
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Siglo XIV (1346) — Sitio de Kaffa</div>
+            <div class="tl-text">Tártaros lanzaron cadáveres infectados con peste bubónica mediante catapultas para debilitar a los defensores. Versón &amp; Cárdenas, 2010.</div> <img src="imagenes/siglo-XIV.png" alt="Siglo XIV" class="tl-img">
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Siglos XV–XVI</div>
+            <div class="tl-text">Conquista de América: introducción intencional de viruela en poblaciones indígenas sin inmunidad, generando epidemias de gran impacto (Estany, 2019).</div> <img src="imagenes/siglo-XV,XVI.png" alt="Siglo XV" class="tl-img">
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Siglo XVII</div>
+            <div class="tl-text">Colonos ingleses entregaron mantas contaminadas con viruela a comunidades indígenas. Descubrimiento de microorganismos.</div> <img src="imagenes/sigloXVII.png" alt="Siglo XVII" class="tl-img">
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Siglo XIX</div>
+            <div class="tl-text">Consolidación de la teoría microbiana. Síntesis del gas mostaza (Guthrie, 1860).</div> <img src="imagenes/siglo-XIX.png" alt="Siglo XIX" class="tl-img">
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Primera Guerra Mundial (1914–1920)</div>
+            <div class="tl-text">Primer uso masivo de armas químicas. Firma del Protocolo de Ginebra (1925).</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Guerra Fría (1947–1990)</div>
+            <div class="tl-text">EE.UU. y URSS desarrollaron y almacenaron agentes biológicos (ántrax, viruela, plaga).</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Siglo XXI – Actualidad</div>
+            <div class="tl-text">Desafío para la seguridad sanitaria global, debido a la facilidad de producción, capacidad de diseminación y alto impacto en la salud pública. Avances en biotecnología han incrementado la preocupación por el uso deliberado de microorganismos con fines terroristas.</div> <img src="imagenes/siglo-XXI.png" alt="Siglo XXI" class="tl-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-points">
+    <div class="key-points-title">✦ PUNTOS CLAVE</div>
+    <div class="key-point"><div class="kp-icon">●</div><div class="kp-text">El bioterrorismo se distingue de la epidemia natural por su <strong>intencionalidad deliberada</strong>.</div></div>
+    <div class="key-point"><div class="kp-icon">●</div><div class="kp-text">La base histórica de la enfermería en bioterrorismo incluye: control de infecciones, aislamiento, vigilancia epidemiológica, educación sanitaria y atención directa a afectados (Huertas et al., 2001).</div></div>
+    <div class="key-point"><div class="kp-icon">●</div><div class="kp-text">Afecta cuatro dimensiones: personas, animales/ecosistemas, sistemas de salud y sociedad en general.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 2. AGENTES ======= -->
+<section class="section tab-section active" id="sec-agentes">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 02</div>
+    <h2 class="sec-title">Clasificación de Agentes Biológicos (CDC)</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">El Centro de Control de Enfermedades (CDC) clasifica los agentes biológicos en tres categorías:</p>
+  </div>
+
+  <div class="agents-grid">
+    <div class="agent-card agent-A">
+      <div class="agent-cat">⚠ CATEGORÍA A — ALTA PRIORIDAD</div>
+      <p style="font-family:'Lora',serif;font-size:.8rem;color:#2f2d2d;margin-bottom:.8rem">Mayor amenaza. Fácil diseminación o transmisión persona a persona. Alta mortalidad. Generan pánico masivo.</p>
+      <div class="agent-examples">
+        <strong>Agentes:</strong> Ántrax (Bacillus anthracis) · Viruela · Plaga bubónica · Botulismo · Tularemia · Fiebres hemorrágicas (Ébola, Marburg)
+      </div>
+    </div>
+    <div class="agent-card agent-B">
+      <div class="agent-cat">◈ CATEGORÍA B — SEGUNDA PRIORIDAD</div>
+      <p style="font-family:'Lora',serif;font-size:.8rem;color:#2f2d2d;margin-bottom:.8rem">Moderadamente fáciles de diseminar. Morbilidad moderada y menor mortalidad. Requieren vigilancia específica.</p>
+      <div class="agent-examples">
+        <strong>Agentes:</strong> Brucelosis · Fiebre Q · Salmonella · E. coli O157:H7 · Ricina · Toxina del cólera
+      </div>
+    </div>
+    <div class="agent-card agent-C">
+      <div class="agent-cat">◇ CATEGORÍA C — TERCERA PRIORIDAD</div>
+      <p style="font-family:'Lora',serif;font-size:.8rem;color:#2f2d2d;margin-bottom:.8rem">Patógenos emergentes que podrían modificarse para diseminación masiva. Disponibilidad y potencial de alto impacto.</p>
+      <div class="agent-examples">
+        <strong>Agentes:</strong> Hantavirus · Virus Nipah · Micotoxinas · Cepas multirresistentes emergentes
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-box">
+    <div class="alert-label"><i class="fa-solid fa-triangle-exclamation"></i> ALERTA CLÍNICA — Señales de Sospecha de Bioterrorismo</div>
+    <p>Buscar: patrón epidémico inusual (múltiples casos simultáneos sin nexo epidemiológico claro), presentación clínica atípica para la zona, agente inusual en región no endémica, falta de respuesta a tratamiento convencional, casos de enfermedad rara o erradicada.</p>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('vias-body','vias-arrow')">
+      <span><i class="fa-solid fa-microscope"></i> Vías de Diseminación y Patrones Clínicos por Agente</span>
+      <span class="acc-arrow" id="vias-arrow">▼</span>
+    </button>
+    <div class="acc-body" id="vias-body">
+      <div class="acc-content">
+        <table class="proto-table">
+          <thead><tr><th>Agente</th><th>Vía Principal</th><th>Síntomas Clave</th><th>Categoría CDC</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Ántrax Inhalatorio</strong></td><td>Aerosol / esporas inhaladas</td><td>Fiebre súbita, disnea progresiva, mediastinitis. Sin tratamiento: mortalidad &gt;80%</td><td style="color:#C0392B;font-weight:bold">A</td></tr>
+            <tr><td><strong>Viruela</strong></td><td>Aerosol, contacto directo</td><td>Fiebre alta, erupción vesiculopustular generalizada, lesiones en palmas y plantas</td><td style="color:#C0392B;font-weight:bold">A</td></tr>
+            <tr><td><strong>Botulismo</strong></td><td>Ingestión / aerosol de toxina</td><td>Parálisis descendente, diplopia, disfagia, ptosis. SIN fiebre, SIN alteración de conciencia</td><td style="color:#C0392B;font-weight:bold">A</td></tr>
+            <tr><td><strong>Plaga Neumónica</strong></td><td>Aerosol de Yersinia pestis</td><td>Fiebre alta, tos hemoptoica, sepsis fulminante. Muy alta mortalidad sin tratamiento</td><td style="color:#C0392B;font-weight:bold">A</td></tr>
+            <tr><td><strong>Fiebre Hemorrágica</strong></td><td>Contacto directo con fluidos</td><td>Fiebre, hemorragias mucosas, fallo multiorgánico. Ébola, Marburg, Lassa</td><td style="color:#C0392B;font-weight:bold">A</td></tr>
+            <tr><td><strong>Ricina</strong></td><td>Ingestión / inyección</td><td>Dolor abdominal, diarrea hemorrágica, fallo multiorgánico. No hay antídoto</td><td style="color:#E67E22;font-weight:bold">B</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 3. NORMATIVIDAD ======= -->
+<section class="section tab-section active" id="sec-norma">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 03</div>
+    <h2 class="sec-title">Normatividad Aplicable</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">Marco legal internacional, nacional y de enfermería que regula la respuesta ante eventos de bioterrorismo.</p>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('norma-int','ni-arr')">
+      <span><i class="fa-solid fa-globe"></i> Marco Normativo Internacional</span>
+      <span class="acc-arrow" id="ni-arr">▼</span>
+    </button>
+    <div class="acc-body" id="norma-int">
+      <div class="acc-content">
+        <table class="proto-table">
+          <thead><tr><th>Instrumento / Organismo</th><th>Contenido Relevante</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Convención sobre Armas Biológicas y Toxínicas (CABT, 1972)</strong></td><td>Prohíbe el desarrollo, producción y almacenamiento de armas biológicas. Ratificada por más de 180 países.</td></tr>
+            <tr><td><strong>Protocolo de Ginebra (1925)</strong></td><td>Primer acuerdo internacional que prohíbe el uso de armas bacteriológicas en conflictos armados.</td></tr>
+            <tr><td><strong>Reglamento Sanitario Internacional (OMS, RSI 2005)</strong></td><td>Marco jurídico para detección, evaluación, notificación y respuesta ante eventos biológicos de importancia internacional. Orienta la comunicación de riesgo transparente y responsable.</td></tr>
+            <tr><td><strong>Resolución 1540 ONU (2004)</strong></td><td>Obliga a los estados a adoptar medidas contra la proliferación de armas biológicas, químicas o nucleares.</td></tr>
+            <tr><td><strong>Marco de Sendai (2015–2030)</strong></td><td>Incluye desastres de origen biológico y orienta la Reducción del Riesgo de Desastres (RRD) con enfoque preventivo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('norma-col','nc-arr')">
+      <span>🇨🇴 Marco Normativo Nacional — Colombia</span>
+      <span class="acc-arrow" id="nc-arr">▼</span>
+    </button>
+    <div class="acc-body" id="norma-col">
+      <div class="acc-content">
+        <table class="proto-table">
+          <thead><tr><th>Instrumento</th><th>Contenido Relevante</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Ley 1523 de 2012</strong></td><td>Establece el Sistema Nacional de Gestión del Riesgo de Desastres (SNGRD). Crea la UNGRD. Incluye riesgos de origen biológico.</td></tr>
+            <tr><td><strong>Resolución 3280 de 2018 (Minsalud)</strong></td><td>Lineamientos técnicos y operativos de la Ruta Integral de Atención en Salud. Base para protocolos de respuesta en emergencias biológicas.</td></tr>
+            <tr><td><strong>Decreto 4107 de 2011</strong></td><td>Estructura del Minsalud. Asigna responsabilidades de vigilancia epidemiológica ante emergencias de salud pública.</td></tr>
+            <tr><td><strong>Ley 266 de 1996 — Ejercicio de la Enfermería</strong></td><td>Regula la profesión en Colombia. Define rol, funciones y alcance de práctica en situaciones de emergencia y desastre.</td></tr>
+            <tr><td><strong>Plan Decenal de Salud Pública 2022–2031</strong></td><td>Incluye preparación y respuesta ante emergencias sanitarias, pandemias y riesgos biológicos como componente estratégico.</td></tr>
+            <tr><td><strong>SIVIGILA</strong></td><td>Sistema de notificación obligatoria de eventos de interés en salud pública, incluidos brotes inusuales por posible bioterrorismo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('norma-enf','ne-arr')">
+      <span><i class="fa-solid fa-user-nurse"></i> Normatividad de Enfermería en DEU (CIE)</span>
+      <span class="acc-arrow" id="ne-arr">▼</span>
+    </button>
+    <div class="acc-body" id="norma-enf">
+      <div class="acc-content">
+        <div class="cards-grid" style="grid-template-columns:1fr 1fr">
+          <div class="card">
+            <div class="card-title">Competencias Centrales CIE Versión 2.0 (2019)</div>
+            <div class="card-text">Define 8 ámbitos de competencia aplicables a enfermeras Nivel I, II y III en situaciones de desastre, incluidos desastres biológicos.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Marco de Competencias CIE para Desastres (Hutton et al., 2016)</div>
+            <div class="card-text">Revisión que incorpora competencias específicas para manejo de agentes NRBQ (Nuclear, Radiológico, Biológico y Químico).</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Código Deontológico del CIE (2021)</div>
+            <div class="card-text">Establece principios éticos que guían el ejercicio profesional en situaciones de triage masivo y escasez de recursos. Es la columna vertebral del actuar ético en bioterrorismo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 4. EPISTEMOLOGÍA ======= -->
+<section class="section tab-section active" id="sec-epistemologia">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 04</div>
+    <h2 class="sec-title">Marco Epistemológico — Enfermería en Bioterrorismo</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">Fundamentos teóricos disciplinares que confieren identidad y autonomía a la enfermería.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card" onclick="toggleAcc('nightingale-b','ni2-arr')">
+      <div class="card-icon"><i class="fa-solid fa-user-nurse"></i> </div>
+      <div class="card-title">Florence Nightingale — Teoría del Entorno</div>
+      <div class="card-text">El cuidado no comienza con la herida del paciente, sino con la seguridad del lugar donde reside. En bioterrorismo, el entorno no controlado es el principal vector de diseminación.</div>
+    </div>
+    <div class="card" onclick="toggleAcc('watson-b','wa-arr')">
+      <div class="card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+      <div class="card-title">Jean Watson — Ciencia del Cuidado Humano</div>
+      <div class="card-text">El bioterrorismo genera terror, no solo enfermedad. El Triage es el primer contacto terapéutico. La Presencia Auténtica (Caritas 2) transmite calma en los primeros 60 segundos de evaluación.</div>
+    </div>
+    <div class="card" onclick="toggleAcc('neuman-b','ne2-arr')">
+      <div class="card-icon"><i class="fa-solid fa-gears"></i> </div>
+      <div class="card-title">Betty Neuman — Modelo de Sistemas</div>
+      <div class="card-text">El bioterrorismo es un estresor extrínseco que amenaza la estabilidad del sistema. Ofrece un mapa tridimensional: ANTES (prevención primaria), DURANTE (secundaria) y DESPUÉS (terciaria).</div>
+    </div>
+    <div class="card" onclick="toggleAcc('carper-b','ca-arr')">
+      <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+      <div class="card-title">Patrones de Conocimiento (Carper, 1978)</div>
+      <div class="card-text">Empírico (ciencia), Estético (arte del cuidado), Personal (autoconocimiento), Ético (justicia distributiva) y Sociopolítico (advocacy comunitario).</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('nightingale-b','ni2-arr')">
+      <span><i class="fa-solid fa-user-nurse"></i> Nightingale — Teoría del Entorno en Bioterrorismo</span>
+      <span class="acc-arrow" id="ni2-arr">▼</span>
+    </button>
+    <div class="acc-body" id="nightingale-b">
+      <div class="acc-content">
+        <p>Para la enfermera de Nivel I, el cuidado no comienza con la herida del paciente, sino con la <strong>seguridad del lugar donde este reside.</strong> Al identificar y gestionar determinantes físicos (asegurar instalaciones, despejar rutas de evacuación, implementar barreras sanitarias), la enfermera realiza un acto de cuidado preventivo.</p>
+        <div class="tip-box" style="margin-top:1rem">
+          <div class="tip-label">💡 Aplicación Práctica — MITIGACIÓN</div>
+          <p>Un entorno deficiente es, en sí mismo, una fuente de enfermedad. En desastres biológicos, un entorno no controlado se convierte en el principal vector de diseminación del agente biológico. <em>"Cuido el entorno para proteger al cuerpo."</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('watson-b','wa-arr')">
+      <span><i class="fa-solid fa-hand-holding-heart"></i> Watson — 10 Procesos Caritas en Bioterrorismo</span>
+      <span class="acc-arrow" id="wa-arr">▼</span>
+    </button>
+    <div class="acc-body" id="watson-b">
+      <div class="acc-content">
+        <table class="proto-table">
+          <thead><tr><th>Proceso Caritas</th><th>Aplicación en Bioterrorismo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Caritas 1</strong> — Práctica del amor y la bondad</td><td>La preparación no es un acto burocrático; es el primer acto de amor hacia las víctimas potenciales. La enfermera que se capacita cuida antes de que exista el paciente.</td></tr>
+            <tr><td><strong>Caritas 2</strong> — Fe, esperanza y sensibilidad</td><td>En el momento del caos, sostiene la fe de quien ya no puede sostenerla. Transmite calma en los primeros 60 segundos de evaluación. Presencia Auténtica.</td></tr>
+            <tr><td><strong>Caritas 4</strong> — Relación de cuidado de confianza</td><td>El Triage no es solo un código de color: es el primer contacto terapéutico. La mirada, la voz y el tacto de la enfermera son intervenciones clínicas.</td></tr>
+            <tr><td><strong>Caritas 5</strong> — Aceptación de sentimientos</td><td>Valida el terror del paciente sin amplificarlo. Los Primeros Auxilios Psicológicos (PAP) son la expresión más alta de la Presencia Auténtica en la crisis.</td></tr>
+            <tr><td><strong>Caritas 7</strong> — Aprendizaje transpersonal</td><td>La educación comunitaria y los simulacros son relaciones de cuidado transpersonal. Transferencia de conocimiento como acto terapéutico en el tiempo preventivo.</td></tr>
+            <tr><td><strong>Caritas 8</strong> — Entorno de curación físico y espiritual</td><td>La recuperación no es solo la ausencia de enfermedad; es la restauración de un entorno donde la persona pueda rehacer su mundo de sentido.</td></tr>
+            <tr><td><strong>Caritas 10</strong> — Apertura a lo existencial</td><td>El bioterrorismo genera crisis de sentido. La enfermera sostiene las preguntas existenciales: ¿Por qué a mí? ¿Qué queda después? Son preguntas clínicas que merecen presencia, no respuestas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('neuman-b','ne2-arr')">
+      <span><i class="fa-solid fa-gears"></i> Neuman — Modelo de Sistemas: Líneas de Defensa</span>
+      <span class="acc-arrow" id="ne2-arr">▼</span>
+    </button>
+    <div class="acc-body" id="neuman-b">
+      <div class="acc-content">
+        <table class="proto-table">
+          <thead><tr><th>Componente Neuman</th><th>Aplicación en Bioterrorismo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>El cliente como sistema</strong></td><td>Tres niveles: (a) Individuo y animales, (b) Sistemas de salud, (c) Sociedad. Todos son clientes del cuidado de enfermería.</td></tr>
+            <tr><td><strong>El agente como estresor</strong></td><td>Estresor extrínseco con naturaleza biológica, intencionalidad deliberada e impacto multidimensional (físico, psíquico y sociopolítico).</td></tr>
+            <tr><td><strong>Línea Normal de Defensa</strong></td><td>Estado de salud estable de la población. El bioterrorismo busca quebrar esta línea para provocar un impacto mayor al de una epidemia natural.</td></tr>
+            <tr><td><strong>Línea Flexible de Defensa</strong></td><td>Mecanismos de protección ante lo inesperado; su vulnerabilidad aumenta cuando los sistemas de salud pública carecen de capacidad de respuesta oportuna.</td></tr>
+            <tr><td><strong>Prevención Primaria</strong></td><td>Fortalecimiento de la vigilancia epidemiológica y preparación del sistema de salud ANTES del evento.</td></tr>
+            <tr><td><strong>Prevención Secundaria</strong></td><td>Diagnóstico y tratamiento rápido una vez liberado el agente, para mitigar enfermedad y mortalidad.</td></tr>
+            <tr><td><strong>Prevención Terciaria</strong></td><td>Rehabilitación, recuperación psicosocial y restauración del equilibrio del sistema tras el evento.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('carper-b','ca-arr')">
+      <span><i class="fa-solid fa-lightbulb"></i> Carper (1978) — 5 Patrones de Conocimiento en Enfermería</span>
+      <span class="acc-arrow" id="ca-arr">▼</span>
+    </button>
+    <div class="acc-body" id="carper-b">
+      <div class="acc-content">
+        <div class="cards-grid" style="grid-template-columns:1fr 1fr">
+          <div class="card"><div class="card-title">Empírico</div><div class="card-text">Conocimiento científico: reconocimiento de signos y síntomas atípicos por exposición a agentes biológicos. CDC Categoría A, B, C. Epidemiología y cadena de transmisión.</div></div>
+          <div class="card"><div class="card-title">Estético</div><div class="card-text">Arte del cuidado: comunicación efectiva con víctimas en crisis. Triage humanizado. Primeros Auxilios Psicológicos con presencia auténtica.</div></div>
+          <div class="card"><div class="card-title">Personal</div><div class="card-text">Autoconocimiento: reconocer la propia vulnerabilidad y el riesgo de exposición. Gestión emocional del cuidador ante situaciones de caos y muerte masiva.</div></div>
+          <div class="card"><div class="card-title">Ético</div><div class="card-text">Justicia distributiva: triage bajo el principio del mayor bien para el mayor número. Decisiones éticas ante escasez de recursos. Marco deontológico CIE.</div></div>
+          <div class="card"><div class="card-title">Sociopolítico</div><div class="card-text">Patrón emancipatorio: comprensión del bioterrorismo como problema de inequidad y poder global. Advocacy por comunidades vulnerables.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 5. DEU CIRCLE ======= -->
+<section class="section tab-section active" id="deu" style="background:linear-gradient(135deg,#2E1F3D,#3A2A4A,#1E3535)">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number" style="color:rgba(196,163,90,0.8)">SECCIÓN 05</div>
+    <h2 class="sec-title" style="color:#F5EFE1">Círculo DEU — Bioterrorismo como Desastre Biológico</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro" style="color:rgba(245,239,225,0.7)">El bioterrorismo se inscribe en el ciclo clásico de gestión de Desastres, Emergencias y Urgencias.</p>
+  </div>
+
+  <div class="deu-wrap">
+    <div class="deu-circle-container">
+      <svg class="deu-svg" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Background circle -->
+        <circle cx="170" cy="170" r="155" fill="rgba(245,239,225,0.04)" stroke="rgba(196,163,90,0.2)" stroke-width="1"/>
+        <!-- MITIGACIÓN - Cuadrante superior izquierdo -->
+<g class="deu-phase-btn" onclick="selectPhase('mit')" id="phase-mit">
+
+  <path class="phase-arc"
+        d="M170 170
+           L170 40
+           A130 130 0 0 0 40 170
+           Z"
+        fill="#1A6B3A" opacity="0.9"/>
+
+  <path class="phase-arc"
+        d="M170 170
+           L170 40
+           A130 130 0 0 0 40 170
+           Z"
+        fill="none"
+        stroke="rgba(245,239,225,0.2)"
+        stroke-width="1"/>
+
+  <text x="110" y="95"
+        text-anchor="middle"
+        font-family="Cinzel, serif"
+        font-size="9"
+        fill="#fff"
+        font-weight="600">
+    MITIGACIÓN
+  </text>
+
+</g>
+        <!-- PREPARACIÓN - Cuadrante superior derecho -->
+<g class="deu-phase-btn" onclick="selectPhase('pre')" id="phase-pre">
+
+  <path class="phase-arc"
+        d="M170 170
+           L300 170
+           A130 130 0 0 0 170 40
+           Z"
+        fill="#8C4A0A" opacity="0.9"/>
+
+  <path class="phase-arc"
+        d="M170 170
+           L300 170
+           A130 130 0 0 0 170 40
+           Z"
+        fill="none"
+        stroke="rgba(245,239,225,0.2)"
+        stroke-width="1"/>
+
+  <text x="235" y="95"
+        text-anchor="middle"
+        font-family="Cinzel, serif"
+        font-size="9"
+        fill="#fff"
+        font-weight="600">
+    PREPARACIÓN
+  </text>
+
+</g>
+        <!-- RESPUESTA - Bottom-Right red -->
+<g class="deu-phase-btn" onclick="selectPhase('res')" id="phase-res">
+
+  <path class="phase-arc"
+        d="M170 170
+           L300 170
+           A130 130 0 0 1 170 300
+           Z"
+        fill="#7A1F14" opacity="0.9"/>
+
+  <path class="phase-arc"
+        d="M170 170
+           L300 170
+           A130 130 0 0 1 170 300
+           Z"
+        fill="none"
+        stroke="rgba(245,239,225,0.2)"
+        stroke-width="1"/>
+
+  <text x="250" y="240"
+        text-anchor="middle"
+        font-family="Cinzel, serif"
+        font-size="9"
+        fill="#fff"
+        font-weight="600">
+    RESPUESTA
+  </text>
+
+</g>
+         
+      <!-- RECUPERACIÓN - Bottom-Left teal -->
+<g class="deu-phase-btn" onclick="selectPhase('rec')" id="phase-rec">
+
+  <path class="phase-arc"
+        d="M170 170
+           L170 300
+           A130 130 0 0 1 40 170
+           Z"
+        fill="#1A4547" opacity="0.9"/>
+
+  <path class="phase-arc"
+        d="M170 170
+           L170 300
+           A130 130 0 0 1 40 170
+           Z"
+        fill="none"
+        stroke="rgba(245,239,225,0.2)"
+        stroke-width="1"/>
+
+  <text x="110" y="240"
+        text-anchor="middle"
+        font-family="Cinzel, serif"
+        font-size="9"
+        fill="#fff"
+        font-weight="600">
+    RECUPERACIÓN
+  </text>
+
+</g>
+        <!-- Center circle -->
+        <circle cx="170" cy="170" r="55" fill="#2E1F3D" stroke="rgba(196,163,90,0.5)" stroke-width="1.5"/>
+        <text x="170" y="165" text-anchor="middle" font-family="Cinzel,serif" font-size="12" fill="#C4A35A" font-weight="600">CICLO DEU</text>
+        <text x="170" y="177" text-anchor="middle" font-family="Cinzel,serif" font-size="12" fill="rgba(196,163,90,0.8)">BIOTERRORISMO</text>
+        <!-- Rotating arrows indicator -->
+        <circle cx="170" cy="170" r="68" fill="none" stroke="rgba(196,163,90,0.15)" stroke-width="1" stroke-dasharray="4 8"/>
+      </svg>
+    </div>
+
+    <div id="deu-detail" class="phase-card">
+      <p style="font-family:'Lora',serif;color:rgba(245,239,225,0.5);font-size:.9rem;font-style:italic;text-align:center;padding:2rem 0">
+        ← Haz clic en una fase del círculo para ver el protocolo completo
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 6. ROL ENFERMERÍA ======= -->
+<section class="section tab-section active" id="sec-rol">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 06</div>
+    <h2 class="sec-title">Rol de Enfermería Nivel I CIE en Bioterrorismo</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">La enfermera de Nivel I es la enfermera generalista que posee las competencias básicas para responder a un desastre. En bioterrorismo, asume el rol de <strong>Centinela y Primer Respondiente</strong> con visión científica.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 IDENTIDAD DEL PRIMER RESPONDIENTE — Nivel I CIE</div>
+    <p>Enfermera generalista capaz de: (1) liderar la clasificación inicial mediante Triage START con EPP adecuado; (2) realizar análisis de vulnerabilidad del entorno; (3) garantizar la primera atención e inicio de vigilancia epidemiológica; (4) brindar Primeros Auxilios Psicológicos; y (5) activar la cadena de notificación ante eventos sospechosos.</p>
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--dark-purple);margin:2rem 0 1rem">Los 8 Ámbitos de Competencia CIE</h3>
+
+  <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-folder-open"></i></div>
+      <div class="card-title">1. Preparación y Planificación</div>
+      <div class="card-text">Conoce el protocolo institucional ante eventos biológicos. Verifica EPI disponible. Sabe a quién y cómo notificar ante caso sospechoso.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+      <div class="card-title">2. Comunicación</div>
+      <div class="card-text">Comunica síntomas atípicos al equipo y autoridades. Informa a la comunidad sin generar pánico. Documenta el evento con precisión y terminología correcta.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div class="card-title">3. Gestión de Incidentes</div>
+      <div class="card-text">Conoce la cadena de mando ante eventos NRBQ. Se integra al equipo de respuesta siguiendo protocolos del SNGRD y Secretaría de Salud.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="card-title">4. Seguridad y Protección</div>
+      <div class="card-text">Selecciona y usa correctamente el EPI según el agente sospechoso. Implementa medidas de bioseguridad adaptadas al recurso disponible.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="card-title">5. Evaluación</div>
+      <div class="card-text">Detecta patrones clínicos atípicos (múltiples casos simultáneos). Aplica Triage START en incidentes con múltiples víctimas.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-syringe"></i></div>
+      <div class="card-title">6. Intervención</div>
+      <div class="card-text">Aísla casos sospechosos. Administra quimioprofilaxis bajo prescripción. Coordina la descontaminación. Brinda Primeros Auxilios Psicológicos.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+      <div class="card-title">7. Recuperación</div>
+      <div class="card-text">Realiza vigilancia epidemiológica activa. Deriva casos para seguimiento médico y psicológico. Participa en la restauración de la normalidad sanitaria.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-building-columns"></i></div>
+      <div class="card-title">8. Derecho y Ética</div>
+      <div class="card-text">Respeta los derechos de las víctimas durante el triage. Aplica el principio del mayor bien para el mayor número con marco deontológico CIE.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 7. TRIAGE START ======= -->
+<section class="section tab-section active" id="sec-triage">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 07</div>
+    <h2 class="sec-title">Triage START Adaptado a Bioterrorismo</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">El Triage START (Simple Triage And Rapid Treatment) es la brújula en el caos. En eventos de bioterrorismo, la evaluación sigue la misma secuencia lógica en <strong>menos de 60 segundos</strong>, incorporando elementos específicos de bioseguridad.</p>
+  </div>
+
+  <div class="alert-box">
+    <div class="alert-label">🛡️ REGLA DE ORO — EPP PRIMERO, SIEMPRE</div>
+    <p>La escena es segura antes que la víctima. En eventos biológicos, la prisa sin protección convierte al respondiente en una víctima adicional. La enfermera de Nivel I que llega sin protección adecuada no salva: expone y colapsa el sistema.</p>
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--dark-purple);margin:2rem 0 1rem;text-align:center">Algoritmo START — Evaluación en 4 Pasos</h3>
+  <div class="start-flow">
+    <div class="start-step">
+      <div class="start-step-num">1</div>
+      <div class="start-step-text"><strong>MARCHA:</strong> ¿Puede caminar el paciente? → <span style="color:#27AE60;font-weight:bold">SÍ = VERDE (Leve)</span> — Dirigir a zona segura de reagrupamiento con EPP del evaluador.</div>
+    </div>
+    <div class="start-arrow">↓</div>
+    <div class="start-step">
+      <div class="start-step-num">2</div>
+      <div class="start-step-text"><strong>RESPIRACIÓN:</strong> ¿Respira? Abrir vía aérea si no. → <span style="color:#2C2C2C;font-weight:bold">NO respira tras maniobra = NEGRO (Fallecido)</span> | <span style="color:#27AE60">SÍ respira = continuar evaluación</span></div>
+    </div>
+    <div class="start-arrow">↓</div>
+    <div class="start-step">
+      <div class="start-step-num">3</div>
+      <div class="start-step-text"><strong>PERFUSIÓN:</strong> Pulso radial / Llenado capilar &gt;2 seg. → <span style="color:#C0392B;font-weight:bold">Llenado &gt;2 seg. o sin pulso = ROJO (Inmediato)</span> | Normal = continuar</div>
+    </div>
+    <div class="start-arrow">↓</div>
+    <div class="start-step">
+      <div class="start-step-num">4</div>
+      <div class="start-step-text"><strong>ESTADO MENTAL:</strong> ¿Obedece órdenes simples? → <span style="color:#C0392B;font-weight:bold">NO = ROJO (Inmediato)</span> | <span style="color:#E67E22;font-weight:bold">SÍ = AMARILLO (Diferido)</span></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--dark-purple);margin:2rem 0 1rem;text-align:center">Haz clic en cada color para ver el protocolo específico</h3>
+  <div class="triage-grid">
+    <div class="triage-card rojo" onclick="showTriage('rojo')">
+      <div class="triage-code">🔴</div>
+      <div class="triage-name">ROJO — INMEDIATO</div>
+      <p style="font-size:.75rem;margin-top:.5rem;opacity:.9">Prioridad 1</p>
+    </div>
+    <div class="triage-card amarillo" onclick="showTriage('amarillo')">
+      <div class="triage-code">🟡</div>
+      <div class="triage-name">AMARILLO — DIFERIDO</div>
+      <p style="font-size:.75rem;margin-top:.5rem;opacity:.9">Prioridad 2</p>
+    </div>
+    <div class="triage-card verde" onclick="showTriage('verde')">
+      <div class="triage-code">🟢</div>
+      <div class="triage-name">VERDE — LEVE</div>
+      <p style="font-size:.75rem;margin-top:.5rem;opacity:.9">Prioridad 3</p>
+    </div>
+    <div class="triage-card negro" onclick="showTriage('negro')">
+      <div class="triage-code">⬛</div>
+      <div class="triage-name">NEGRO — SIN POSIBILIDAD</div>
+      <p style="font-size:.75rem;margin-top:.5rem;opacity:.9">Fallecido / No recuperable</p>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="triage-detail" id="modal-rojo" onclick="hideTriage(event,'modal-rojo')">
+    <div class="triage-modal">
+      <button class="modal-close" onclick="document.getElementById('modal-rojo').classList.remove('show')">✕</button>
+      <h3 style="color:#C0392B">🔴 ROJO — INMEDIATO (Prioridad 1)</h3>
+      <p><strong>Criterio:</strong> Críticos recuperables con compromiso vital y ventana terapéutica abierta.</p>
+      <h4 style="font-family:'Cinzel',serif;font-size:.8rem;margin:1rem 0 .5rem">Acción en Bioterrorismo:</h4>
+      <ul>
+        <li>Atención inmediata con máximo nivel de bioseguridad</li>
+        <li>Aislamiento estricto antes del manejo</li>
+        <li>Notificación prioritaria al INS y autoridades sanitarias</li>
+        <li>Inicio de quimioprofilaxis o antídoto según agente</li>
+        <li>Documentar criterios de clasificación</li>
+      </ul>
+      <div class="critical-box" style="margin-top:1rem">
+        <div class="critical-label">⚠ NOTA ÉTICA</div>
+        <p style="font-family:'Lora',serif;font-size:.85rem;color:#555">El triage en esta categoría requiere juicio clínico riguroso bajo el principio del mayor bien para el mayor número. Documentar siempre los criterios utilizados.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="triage-detail" id="modal-amarillo" onclick="hideTriage(event,'modal-amarillo')">
+    <div class="triage-modal">
+      <button class="modal-close" onclick="document.getElementById('modal-amarillo').classList.remove('show')">✕</button>
+      <h3 style="color:#E67E22">🟡 AMARILLO — DIFERIDO (Prioridad 2)</h3>
+      <p><strong>Criterio:</strong> Graves estables. La vida no corre peligro inmediato. Pueden esperar atención diferida.</p>
+      <h4 style="font-family:'Cinzel',serif;font-size:.8rem;margin:1rem 0 .5rem">Acción en Bioterrorismo:</h4>
+      <ul>
+        <li>Atención diferida en zona secundaria con monitoreo constante</li>
+        <li>Inicio de quimioprofilaxis si aplica según agente</li>
+        <li>Reevaluar periódicamente para detectar deterioro</li>
+        <li>Primeros Auxilios Psicológicos: presencia auténtica</li>
+        <li>Mantener aislamiento durante la espera</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="triage-detail" id="modal-verde" onclick="hideTriage(event,'modal-verde')">
+    <div class="triage-modal">
+      <button class="modal-close" onclick="document.getElementById('modal-verde').classList.remove('show')">✕</button>
+      <h3 style="color:#27AE60">🟢 VERDE — LEVE (Prioridad 3)</h3>
+      <p><strong>Criterio:</strong> "Caminantes." Lesiones leves que pueden esperar o colaborar en la respuesta.</p>
+      <h4 style="font-family:'Cinzel',serif;font-size:.8rem;margin:1rem 0 .5rem">Acción en Bioterrorismo:</h4>
+      <ul>
+        <li>Zona de reagrupamiento segura con EPP básico</li>
+        <li>Evaluación de exposición: ¿cuándo? ¿dónde? ¿con quién?</li>
+        <li>Educación sobre síntomas de alerta y cuándo consultar</li>
+        <li>Registro completo de datos para trazabilidad epidemiológica</li>
+        <li>Seguimiento durante período de incubación del agente</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="triage-detail" id="modal-negro" onclick="hideTriage(event,'modal-negro')">
+    <div class="triage-modal">
+      <button class="modal-close" onclick="document.getElementById('modal-negro').classList.remove('show')">✕</button>
+      <h3 style="color:#2C2C2C">⬛ NEGRO — SIN POSIBILIDAD</h3>
+      <p><strong>Criterio:</strong> Sin respiración tras apertura de vía aérea. Sin posibilidad de recuperación con recursos disponibles.</p>
+      <h4 style="font-family:'Cinzel',serif;font-size:.8rem;margin:1rem 0 .5rem">Acción en Bioterrorismo:</h4>
+      <ul>
+        <li>Manejo digno del fallecido con EPP completo</li>
+        <li>Protocolo de custodia de cadáveres en contexto biológico</li>
+        <li>Notificación a familias con acompañamiento en duelo</li>
+        <li>Documentar hora, lugar y condición del hallazgo</li>
+      </ul>
+      <div class="critical-box" style="margin-top:1rem">
+        <div class="critical-label">💙 NOTA ÉTICA — Watson</div>
+        <p style="font-family:'Lora',serif;font-size:.85rem;color:#555">La clasificación Negro no es abandono: es un acto de amor supremo hacia la colectividad. Sostener la dignidad de cada persona clasificada es una responsabilidad deontológica. El principio utilitarista orienta la decisión; la humanidad no la abandona jamás.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 8. ESCENARIOS ======= -->
+<section class="section tab-section tab-section active" id="sec-escenarios">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 08</div>
+    <h2 class="sec-title">Escenarios Clínicos Interactivos</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">Cuatro escenarios relevantes para el contexto colombiano con protocolo específico de enfermería en cada etapa del ciclo DEU.</p>
+  </div>
+
+  <div class="scenario-tabs">
+    <button class="sc-tab active" onclick="showScenario('s1',this)"><i class="fa-solid fa-biohazard icon-antrax"></i> Ántrax</button>
+    <button class="sc-tab" onclick="showScenario('s2',this)"><i class="fa-solid fa-droplet icon-hemorragia"></i> Fiebre Hemorrágica</button>
+    <button class="sc-tab" onclick="showScenario('s3',this)"><i class="fa-solid fa-skull-crossbones icon-toxina"></i> Botulismo/Ricina</button>
+    <button class="sc-tab" onclick="showScenario('s4',this)"><i class="fa-solid fa-triangle-exclamation icon-panico"></i> Pánico Colectivo</button>
+  </div>
+
+  <div class="scenario-panel show" id="s1">
+    <div class="critical-box">
+      <div class="critical-label"> ESCENARIO 1 — Ataque con Ántrax (Bacillus anthracis)</div>
+      <p style="font-family:'Lora',serif;font-size:.9rem;color:#555;margin-top:.5rem">47 personas que asistieron a un evento masivo en Armenia presentan simultáneamente: fiebre alta de aparición súbita, dificultad respiratoria progresiva y lesiones cutáneas atípicas (pústulas con zona hemorrágica central). El patrón no corresponde a ninguna enfermedad endémica local. Se sospecha exposición a esporas de Bacillus anthracis por inhalación.</p>
+    </div>
+    <div class="alert-box">
+      <div class="alert-label">⚠ IMPLICACIÓN — La enfermera centinela salva vidas</div>
+      <p>El ántrax inhalatorio tiene mortalidad &gt;80% sin tratamiento precoz. El tiempo de reconocimiento es crítico. La enfermera centinela que detecta el patrón inusual activa toda la cadena de respuesta.</p>
+    </div>
+    <table class="proto-table">
+      <thead><tr><th>Etapa DEU</th><th>Acciones de Enfermería Nivel I</th></tr></thead>
+      <tbody>
+        <tr><td><span class="phase-highlight ph-mit">MITIGACIÓN</span></td><td>Conocimiento previo de signos clínicos del ántrax. EPI verificado. Identificación de zonas de aislamiento en urgencias.</td></tr>
+        <tr><td><span class="phase-highlight ph-pre">PREPARACIÓN</span></td><td>Simulacros de respuesta ante exposición a esporas. Conoce los protocolos de notificación al INS y SIVIGILA.</td></tr>
+        <tr><td><span class="phase-highlight ph-res">RESPUESTA</span></td><td>Triage START con EPP (mínimo nivel 2 biológico). Activación de zona de aislamiento. Notificación urgente. Apoyo para inicio de ciprofloxacino profiláctico según protocolo.</td></tr>
+        <tr><td><span class="phase-highlight ph-rec">RECUPERACIÓN</span></td><td>Vigilancia de casos secundarios. Seguimiento de 60 días post-exposición. Debriefing del equipo de enfermería.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenario-panel" id="s2">
+    <div class="critical-box">
+      <div class="critical-label">ESCENARIO 2 — Brote Viral Hemorrágico (Categoría A)</div>
+      <p style="font-family:'Lora',serif;font-size:.9rem;color:#555;margin-top:.5rem">Un viajero procedente de una zona endémica llega al Aeropuerto El Edén con fiebre alta, hemorragias mucosas, diarrea profusa y deterioro del estado general. En 48 horas, tres personas de su entorno presentan síntomas similares. El patrón de transmisión rápida genera alerta de posible fiebre viral hemorrágica.</p>
+    </div>
+    <div class="alert-box">
+      <div class="alert-label">⚠ IMPLICACIÓN — Nivel de EPP Máximo Obligatorio</div>
+      <p>Los agentes de fiebre hemorrágica (Categoría A) tienen alto potencial de diseminación persona a persona. El nivel de EPP requerido es el más alto disponible (traje hermético, doble guante, protección ocular). El pánico del personal de salud puede ser tan paralizante como la enfermedad misma.</p>
+    </div>
+    <table class="proto-table">
+      <thead><tr><th>Etapa DEU</th><th>Acciones de Enfermería Nivel I</th></tr></thead>
+      <tbody>
+        <tr><td><span class="phase-highlight ph-mit">MITIGACIÓN</span></td><td>Identificación de protocolos para fiebres hemorrágicas. Conocimiento del nivel de EPP requerido (traje hermético, doble guante, protección ocular).</td></tr>
+        <tr><td><span class="phase-highlight ph-pre">PREPARACIÓN</span></td><td>Entrenamiento en donning/doffing de EPP de alto nivel. Inventario de elementos de protección. Identificación de área de aislamiento de presión negativa.</td></tr>
+        <tr><td><span class="phase-highlight ph-res">RESPUESTA</span></td><td>Aislamiento inmediato del caso. Trazabilidad de contactos. Coordinación con INS para clasificación del agente. Gestión del pánico del equipo de salud y la comunidad.</td></tr>
+        <tr><td><span class="phase-highlight ph-rec">RECUPERACIÓN</span></td><td>Monitoreo de contactos durante el período de incubación. Evaluación psicosocial del personal. Actualización de protocolos institucionales.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenario-panel" id="s3">
+    <div class="critical-box">
+      <div class="critical-label">ESCENARIO 3 — Exposición a Toxinas (Botulismo / Ricina)</div>
+      <p style="font-family:'Lora',serif;font-size:.9rem;color:#555;margin-top:.5rem">Varios asistentes a un evento social cerrado presentan síntomas neurológicos progresivos: visión doble, disfagia, ptosis palpebral y parálisis descendente. No hay fiebre. El patrón clínico inusual —múltiples casos simultáneos con compromiso neurológico sin síndrome febril— hace sospechar intoxicación intencional por toxina botulínica.</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 CLAVE DIAGNÓSTICA — Botulismo</div>
+      <p>Patrón distintivo: <strong>parálisis DESCENDENTE + SIN fiebre + SIN alteración de conciencia</strong>. Las toxinas NO se transmiten persona a persona, lo que facilita el manejo del caso. Sin embargo, el deterioro respiratorio progresivo puede ser rápidamente fatal.</p>
+    </div>
+    <table class="proto-table">
+      <thead><tr><th>Etapa DEU</th><th>Acciones de Enfermería Nivel I</th></tr></thead>
+      <tbody>
+        <tr><td><span class="phase-highlight ph-mit">MITIGACIÓN</span></td><td>Conocimiento de los signos clínicos de botulismo (parálisis descendente, sin fiebre, sin alteración de conciencia).</td></tr>
+        <tr><td><span class="phase-highlight ph-pre">PREPARACIÓN</span></td><td>Protocolo de manejo de toxinas en urgencias. Disponibilidad de antitoxina botulínica en farmacia hospitalaria.</td></tr>
+        <tr><td><span class="phase-highlight ph-res">RESPUESTA</span></td><td>Triage con énfasis en función respiratoria. Soporte ventilatorio precoz. Notificación urgente al INS. Identificación y aseguramiento del alimento/fuente. Registro de todos los expuestos.</td></tr>
+        <tr><td><span class="phase-highlight ph-rec">RECUPERACIÓN</span></td><td>Seguimiento de función neurológica. Investigación de fuente de contaminación con autoridades sanitarias y judiciales.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenario-panel" id="s4">
+    <div class="critical-box">
+      <div class="critical-label"> ESCENARIO 4 — Pánico Colectivo y Trauma Masivo</div>
+      <p style="font-family:'Lora',serif;font-size:.9rem;color:#555;margin-top:.5rem">Se difunde en redes sociales que el agua potable de Armenia fue contaminada con un agente biológico mortal. Cientos de personas acuden simultáneamente a urgencias con síntomas somáticos inespecíficos (náuseas, mareo, dificultad respiratoria psicógena). Los servicios colapsan. No hay contaminación real, pero el pánico genera una emergencia sanitaria de facto.</p>
+    </div>
+    <div class="alert-box">
+      <div class="alert-label">⚠ DATO CLAVE — El terror es el arma</div>
+      <p>El bioterrorismo no siempre requiere un agente real. El terror en sí mismo es el arma. La enfermera debe manejar simultáneamente la evaluación clínica para descartar exposición real y la gestión del pánico colectivo.</p>
+    </div>
+    <table class="proto-table">
+      <thead><tr><th>Etapa DEU</th><th>Acciones de Enfermería Nivel I</th></tr></thead>
+      <tbody>
+        <tr><td><span class="phase-highlight ph-mit">MITIGACIÓN</span></td><td>Conocimiento de protocolos de comunicación de riesgo. Formación en manejo de pánico colectivo y primeros auxilios psicológicos masivos.</td></tr>
+        <tr><td><span class="phase-highlight ph-pre">PREPARACIÓN</span></td><td>Coordinación previa con comunicaciones institucionales y medios oficiales. Protocolo de atención para síntomas psicosomáticos en emergencias.</td></tr>
+        <tr><td><span class="phase-highlight ph-res">RESPUESTA</span></td><td>Triage diferenciado: descartar exposición real vs. síntomas psicógenos. PAP grupales. Área de atención psicosocial separada del área médica. Comunicación tranquilizadora y verificada con fuentes oficiales.</td></tr>
+        <tr><td><span class="phase-highlight ph-rec">RECUPERACIÓN</span></td><td>Evaluación psicológica de afectados. Comunicación pública transparente sobre los resultados de las investigaciones. Fortalecimiento de canales de comunicación institucional.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ======= 9. INSTITUCIONES ======= -->
+<section class="section tab-section active" id="sec-instituciones">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 09</div>
+    <h2 class="sec-title">Mapa Institucional de Respuesta</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">La respuesta efectiva ante bioterrorismo requiere la articulación coordinada de múltiples instituciones. La enfermera de Nivel I debe conocer el mapa institucional para activar la cadena correcta desde el primer momento.</p>
+  </div>
+
+  <div class="inst-tabs">
+    <button class="inst-tab active" onclick="showInst('local',this)">🏘️ Local — Quindío</button>
+    <button class="inst-tab" onclick="showInst('nacional',this)">🇨🇴 Nacional</button>
+    <button class="inst-tab" onclick="showInst('internacional',this)">🌐 Internacional</button>
+  </div>
+
+  <div class="inst-panel show" id="local">
+    <div class="inst-card"><div class="inst-icon">🏥</div><div><div class="inst-name">Hospital San Juan de Dios</div><div class="inst-role">Hospital de referencia. Aislamiento, atención de casos, coordinación de respuesta clínica.</div><div class="inst-contact">📞 Urgencias: 893 3900</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🔬</div><div><div class="inst-name">Secretaría de Salud Departamental del Quindío</div><div class="inst-role">Vigilancia epidemiológica (SIVIGILA). Coordinación de respuesta sanitaria departamental. Activación de alerta biológica.</div><div class="inst-contact">📞 333 3800</div></div></div>
+    <div class="inst-card"><div class="inst-icon">⚠️</div><div><div class="inst-name">UNGRD Regional Eje Cafetero</div><div class="inst-role">Coordinación de la gestión del riesgo a nivel regional. Activación del SNGRD.</div><div class="inst-contact">📞 Línea 144</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🚒</div><div><div class="inst-name">Cuerpo de Bomberos Armenia</div><div class="inst-role">Brigadas HAZMAT (Materiales Peligrosos). Descontaminación en campo. Apoyo en aislamiento de zonas de riesgo.</div><div class="inst-contact">📞 119</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🚑</div><div><div class="inst-name">SAMU — Armenia</div><div class="inst-role">Sistema de Atención Médica de Urgencias. Primera atención prehospitalaria y traslado al hospital de referencia.</div><div class="inst-contact">📞 132</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🔴</div><div><div class="inst-name">Cruz Roja Colombiana — Seccional Quindío</div><div class="inst-role">Atención humanitaria de emergencia. Primeros auxilios. Apoyo psicosocial. Manejo de refugios temporales.</div><div class="inst-contact">📞 132</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🛡️</div><div><div class="inst-name">Policía Nacional y Ejército de Colombia</div><div class="inst-role">Seguridad del perímetro. Control de acceso a zonas contaminadas. Apoyo judicial en investigación del origen del ataque.</div><div class="inst-contact">📞 123 / 165</div></div></div>
+  </div>
+
+  <div class="inst-panel" id="nacional">
+    <div class="inst-card"><div class="inst-icon">🧬</div><div><div class="inst-name">Instituto Nacional de Salud (INS)</div><div class="inst-role">Laboratorio de referencia nacional para confirmación de agentes biológicos. Coordinación de la respuesta nacional ante brotes inusuales. Clasificación del evento y notificación internacional.</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🏛️</div><div><div class="inst-name">Ministerio de Salud y Protección Social (Minsalud)</div><div class="inst-role">Emisión de lineamientos nacionales de respuesta. Declaratoria de emergencia sanitaria. Autorización de uso de medicamentos o vacunas de emergencia.</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🚨</div><div><div class="inst-name">UNGRD — Unidad Nacional para la Gestión del Riesgo</div><div class="inst-role">Coordinación del SNGRD. Declaratoria de desastre nacional. Articulación entre sectores (salud, defensa, interior, relaciones exteriores).</div></div></div>
+    <div class="inst-card"><div class="inst-icon">📊</div><div><div class="inst-name">SIVIGILA</div><div class="inst-role">Sistema de notificación obligatoria de eventos de salud pública. Canal de reporte de casos sospechosos de bioterrorismo al INS y Minsalud.</div></div></div>
+    <div class="inst-card"><div class="inst-icon">⚔️</div><div><div class="inst-name">Fuerzas Militares y Policía — CBRN</div><div class="inst-role">Unidades especializadas en respuesta a amenazas Químicas, Biológicas, Radiológicas y Nucleares. Descontaminación a gran escala.</div></div></div>
+  </div>
+
+  <div class="inst-panel" id="internacional">
+    <div class="inst-card"><div class="inst-icon">🌍</div><div><div class="inst-name">OMS — Organización Mundial de la Salud</div><div class="inst-role">Coordinación internacional ante emergencias de salud pública (ESPII) bajo el RSI 2005. Envío de equipos GOARN (Red Global de Alerta y Respuesta ante Brotes).</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🌎</div><div><div class="inst-name">OPS — Organización Panamericana de la Salud</div><div class="inst-role">Apoyo técnico a Colombia en emergencias biológicas. Coordinación regional de la respuesta ante brotes transfronterizos.</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🔴</div><div><div class="inst-name">CICR — Comité Internacional de la Cruz Roja</div><div class="inst-role">Protección de civiles y personal médico en conflictos armados donde se usa bioterrorismo. Atención humanitaria en zonas de conflicto.</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🔵</div><div><div class="inst-name">CDC — Centro de Control de Enfermedades (EE.UU.)</div><div class="inst-role">Referente global para la clasificación de agentes biológicos (Categoría A, B, C), protocolos de respuesta y guías de manejo clínico.</div></div></div>
+    <div class="inst-card"><div class="inst-icon">🕵️</div><div><div class="inst-name">Interpol — Grupo de Bioterrorismo</div><div class="inst-role">Investigación criminal internacional de ataques biológicos. Cooperación entre policías nacionales en casos transnacionales.</div></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 10. HUMANITARIA ======= -->
+<section class="section tab-section active" id="sec-humanitaria">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 10</div>
+    <h2 class="sec-title">Atención Humanitaria en Bioterrorismo</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">La atención humanitaria trasciende el acto médico-clínico: es la expresión más alta del reconocimiento de la dignidad humana en medio del caos.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 PRINCIPIOS — Cruz Roja Internacional</div>
+    <p><strong>Humanidad</strong> · <strong>Imparcialidad</strong> (sin discriminación) · <strong>Neutralidad</strong> · <strong>Independencia</strong> · <strong>Voluntariedad</strong> · <strong>Unidad</strong> · <strong>Universalidad</strong></p>
+  </div>
+
+  <table class="proto-table">
+    <thead><tr><th>Dimensión Humanitaria</th><th>Acción de Enfermería</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Acceso equitativo</strong></td><td>Garantizar que las medidas de triage y contención no discriminen a personas por condición socioeconómica, etnia, género o condición migratoria. La bioseguridad no puede ser pretexto para excluir.</td></tr>
+      <tr><td><strong>Protección de vulnerables</strong></td><td>Atención prioritaria a: adultos mayores, niños, personas con discapacidad, embarazadas, personas en situación de calle y migrantes, que tienen mayor vulnerabilidad inmunológica y menor acceso a información.</td></tr>
+      <tr><td><strong>Confidencialidad y dignidad</strong></td><td>Proteger la identidad de los pacientes diagnosticados. Asegurar espacios de atención que preserven la intimidad, incluso en contextos de emergencia.</td></tr>
+      <tr><td><strong>Comunicación humanitaria</strong></td><td>Informar a las víctimas sobre su diagnóstico, condición y derechos de manera clara, veraz y empática. Nunca usar terminología que criminalice a los afectados.</td></tr>
+      <tr><td><strong>Gestión de fallecidos</strong></td><td>Asegurar el manejo digno de los fallecidos por agente biológico: notificar a las familias, acompañar el duelo en crisis, coordinar el protocolo de custodia de cadáveres con EPP adecuado.</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- ======= 11. PREHOSPITALARIA ======= -->
+<section class="section tab-section active" id="sec-prehospitalaria">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 11</div>
+    <h2 class="sec-title">Atención Prehospitalaria en Bioterrorismo</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">La atención prehospitalaria es el eslabón más crítico en la cadena de supervivencia. Es el primer contacto del sistema de salud con las víctimas.</p>
+  </div>
+
+  <div class="critical-box">
+    <div class="critical-label">REGLA DE ORO PREHOSPITALARIA</div>
+    <p style="font-family:'Lora',serif;font-size:.95rem;color:#555">La escena es segura antes de la víctima. <strong>EPP PRIMERO, SIEMPRE.</strong> La enfermera de Nivel I que llega sin protección adecuada no salva: expone y colapsa el sistema.</p>
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--dark-purple);margin:2rem 0 1rem">Zonificación Prehospitalaria</h3>
+  <div class="cards-grid">
+    <div class="card" style="border-top:4px solid #C0392B">
+      <div class="card-icon"><i class="fa-solid fa-circle-xmark icon-caliente"></i></div>
+      <div class="card-title" style="color:#C0392B">ZONA CALIENTE (Exclusión)</div>
+      <div class="card-text">Área de mayor riesgo. Fuente del agente biológico. <strong>Solo personal HAZMAT certificado con EPP máximo.</strong> La Enfermera Nivel I NO ingresa. Coordina desde zona tibia.</div>
+    </div>
+    <div class="card" style="border-top:4px solid #E67E22">
+      <div class="card-icon"><i class="fa-solid fa-radiation icon-tibia"></i> </div>
+      <div class="card-title" style="color:#E67E22">ZONA TIBIA (Reducción)</div>
+      <div class="card-text">Área de descontaminación y primer contacto seguro. Personal con EPP Nivel 2 (traje, guantes, mascarilla N95/FFP3). <strong>Actividades:</strong> Triage START, primera valoración, inicio de descontaminación.</div>
+    </div>
+    <div class="card" style="border-top:4px solid #27AE60">
+      <div class="card-icon"><i class="fa-solid fa-shield-heart icon-fria"></i></div>
+      <div class="card-title" style="color:#27AE60">ZONA FRÍA (Apoyo)</div>
+      <div class="card-text">Área segura. Puesto de mando y atención diferida. Todo el personal de respuesta puede acceder. <strong>Actividades:</strong> Clasificación secundaria, primeros auxilios, coordinación, PAP.</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('prehosp-body','ph-arr')">
+      <span>Principios de la Atención Prehospitalaria en Eventos Biológicos</span>
+      <span class="acc-arrow" id="ph-arr">▼</span>
+    </button>
+    <div class="acc-body" id="prehosp-body">
+      <div class="acc-content">
+        <table class="proto-table">
+          <thead><tr><th>Principio</th><th>Aplicación en Bioterrorismo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Seguridad de la escena</strong></td><td>Evaluar el tipo de agente biológico sospechoso. Establecer zonas de exclusión, reducción y apoyo. No ingresar sin EPP apropiado.</td></tr>
+            <tr><td><strong>2. Activación del sistema</strong></td><td>Comunicar inmediatamente al SAMU, Bomberos HAZMAT, Secretaría de Salud y UNGRD. Describir: lugar, número de víctimas, síntomas observados, agente sospechoso.</td></tr>
+            <tr><td><strong>3. Triage en campo</strong></td><td>Aplicar Triage START en zona de reducción con EPP. Clasificar y etiquetar antes del traslado. No trasladar sin clasificación previa.</td></tr>
+            <tr><td><strong>4. Descontaminación en campo</strong></td><td>Antes del traslado al hospital, realizar descontaminación primaria en la zona de reducción. Evitar que el agente biológico entre al hospital con el paciente.</td></tr>
+            <tr><td><strong>5. Cadena de custodia</strong></td><td>Documentar todos los casos, síntomas, procedimientos realizados y destino del traslado. Registro imprescindible para la trazabilidad epidemiológica.</td></tr>
+            <tr><td><strong>6. Comunicación hospital receptor</strong></td><td>Notificar al servicio de urgencias el número, clasificación y condición de los pacientes antes de la llegada. Activar el protocolo de aislamiento en el hospital receptor.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 12. SUMINISTROS ======= -->
+<section class="section tab-section active" id="sec-suministros">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 12</div>
+    <h2 class="sec-title">Gestión de Agua, Suministros y Donaciones</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">En un evento de bioterrorismo de mediana o gran escala, la gestión de agua potable, suministros humanitarios y donaciones es una función crítica de enfermería.</p>
+  </div>
+
+  <div class="critical-box">
+    <div class="critical-label">⚠ ALERTA — Agua como Vector de Bioterrorismo</div>
+    <p style="font-family:'Lora',serif;font-size:.9rem;color:#555">El agua potable puede ser un vector de diseminación intencional (toxina botulínica, Salmonella, Vibrio cholerae). Si se sospecha contaminación: <strong>NO beba · NO use · NOTIFIQUE de inmediato</strong> a la Secretaría de Salud y al SNGRD.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-water icon-agua"></i></div>
+      <div class="card-title">Control de Agua en Refugios</div>
+      <div class="card-text">Supervisar que el agua provenga de fuentes certificadas. Verificar cloro residual (0.5–1.0 mg/L) mediante kit de campo. Instruir sobre hervir el agua (1 minuto de ebullición total).</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-pills icon-salud"></i></div>
+      <div class="card-title">Insumos de Salud Esenciales</div>
+      <div class="card-text">EPP (trajes, guantes, mascarillas N95/FFP3, gafas). Medicamentos: ciprofloxacino, doxiciclina. Antídotos y antitoxinas específicas. Jeringas y soluciones IV.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-plate-wheat icon-abrigo"></i></div>
+      <div class="card-title">Alimentación y Abrigo</div>
+      <div class="card-text">Alimentos no perecederos de alto valor nutricional. Fórmulas para lactantes. Kit de higiene: jabón, toallas, desinfectante. Cobijas y colchonetas. Identificar necesidades especiales.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-hand-holding-heart icon-donacion"></i></div>
+      <div class="card-title">Gestión de Donaciones</div>
+      <div class="card-text">No toda donación es útil. Coordinar con Cruz Roja Colombiana y UNGRD. Nunca aceptar medicamentos vencidos, sin embalaje o sin rotulado. Registrar todo: origen, cantidad, destino.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 13. EVACUACIÓN ======= -->
+<section class="section tab-section active" id="sec-evacuacion">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 13</div>
+    <h2 class="sec-title">Planes de Emergencia y Evacuación</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">En bioterrorismo, la decisión de evacuar es una acción médica crítica: el riesgo de diseminar el agente durante el desplazamiento convierte la evacuación en un dilema clínico.</p>
+  </div>
+
+  <div class="alert-box">
+    <div class="alert-label">⚠ EVACUACIÓN EN BIOTERRORISMO ≠ EVACUACIÓN CONVENCIONAL</div>
+    <p>En desastres convencionales (incendio, sismo), evacuar rápido salva vidas. En bioterrorismo, una evacuación desordenada puede <strong>DISEMINAR EL AGENTE</strong> y convertir a los evacuados en vectores. La enfermera debe saber cuándo evacuar y cuándo CONTENER.</p>
+  </div>
+
+  <table class="proto-table">
+    <thead><tr><th>Tipo de Respuesta</th><th>Cuándo Aplicar</th><th>Cómo Procede Enfermería</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--btn)">CONFINAMIENTO</strong><br><em>(Shelter-in-place)</em></td>
+        <td>Agente transmisible por vía aérea. Riesgo de contaminar el ambiente exterior. La institución puede contener con sus recursos.</td>
+        <td>Cerrar ventanas y puertas. Suspender ventilación externa. Concentrar a todos en área segura. Informar con lenguaje tranquilizador.</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#E67E22">EVACUACIÓN CONTROLADA</strong></td>
+        <td>El riesgo interno supera la capacidad de contención. El agente NO se transmite por contacto casual durante el desplazamiento.</td>
+        <td>Evacuar por zonas, comenzando por las más alejadas de la fuente. Verificar descontaminación básica antes de salir. Registrar a todos los evacuados.</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#C0392B">EVACUACIÓN DE EMERGENCIA</strong></td>
+        <td>Riesgo inminente para la vida que supera cualquier otra consideración (incendio, explosión simultánea).</td>
+        <td>Evacuar por rutas establecidas. EPP básico disponible. Reunión en punto de encuentro. Lista de asistencia inmediata.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- ======= 14. REFUGIOS ======= -->
+<section class="section tab-section active" id="sec-refugios">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 14</div>
+    <h2 class="sec-title">Unidades de Refugio y Acogida Transitorias</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">La enfermera de Nivel I es el garante de las condiciones sanitarias del refugio. Un refugio mal gestionado puede ser más peligroso que el evento que lo originó.</p>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-header" onclick="toggleAcc('refugio-crit','rc-arr')">
+      <span>✓ Lista de Chequeo: Habilitación de Refugio Transitorio en Contexto Biológico</span>
+      <span class="acc-arrow" id="rc-arr">▼</span>
+    </button>
+    <div class="acc-body" id="refugio-crit">
+      <div class="acc-content">
+        <div id="refugio-checks"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--dark-purple);margin:2rem 0 1rem">Salud Mental en el Refugio</h3>
+  <div class="tip-box">
+    <div class="tip-label">💡 Modelo ABCDE de Primeros Auxilios Psicológicos</div>
+    <p><strong>A</strong>cercarse · <strong>B</strong>ásico (contacto) · <strong>C</strong>ontener emocionalmente · <strong>D</strong>erivar · <strong>E</strong>valuar el estado emocional</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card"><i class="fa-solid fa-triangle-exclamation icon-riesgo"></i><div class="card-title">Detectar señales de riesgo</div><div class="card-text">Aislamiento extremo, desesperanza, ideación suicida, psicosis reactiva o duelo complicado. Especial atención a niños: mantener rutinas, espacios de juego y acompañamiento familiar permanente.</div></div>
+    <div class="card"><i class="fa-solid fa-people-group icon-lideres"></i><div class="card-text">Identificar líderes comunitarios dentro del refugio que apoyen el mantenimiento de la cohesión social. Crear espacios tranquilos y diferenciados del área médica.</div></div>
+    <div class="card"><div><i class="fa-solid fa-hand-holding-heart icon-bienestar"></i></div><div class="card-title">Bienestar del cuidador</div><div class="card-text">Gestionar el bienestar del personal de enfermería asignado al refugio: turnos razonables, espacios de descanso y apoyo emocional entre compañeros. Debriefing post-turno.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 15. ÉTICA ======= -->
+<section class="section tab-section active" id="sec-etica">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 15</div>
+    <h2 class="sec-title">Derecho, Ética y Bioética en Bioterrorismo</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">La ética en contextos de bioterrorismo no es un apéndice del protocolo: es su columna vertebral. El rol ético de la enfermera atraviesa cada decisión clínica durante todo el ciclo DEU.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 PRINCIPIO RECTOR — Código CIE (2021) + Ley 266/1996</div>
+    <p>La enfermera de Nivel I es simultáneamente <strong>agente técnico, garante de derechos y referente moral</strong> del equipo de salud. Su juicio moral es tan determinante como su destreza clínica.</p>
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--dark-purple);margin:2rem 0 1rem">Dilemas Éticos Centrales</h3>
+  <table class="proto-table">
+    <thead><tr><th>Dilema Ético</th><th>Principio en Tensión</th><th>Orientación Nivel I</th></tr></thead>
+    <tbody>
+      <tr><td><strong>¿Clasificar Negro para salvar un Rojo?</strong></td><td>Autonomía vs. Justicia distributiva</td><td>La clasificación Negro no es abandono: es amor supremo hacia la colectividad. El principio utilitarista (mayor bien para el mayor número) orienta la decisión. Documentar el proceso.</td></tr>
+      <tr><td><strong>¿Atender a pesar del riesgo personal?</strong></td><td>Beneficencia vs. No maleficencia propia</td><td>La enfermera tiene el deber ético de responder, pero también el derecho a protección adecuada. Sin EPP apropiado, la respuesta expone al profesional sin beneficio adicional para las víctimas.</td></tr>
+      <tr><td><strong>¿Informar sobre el agente o mantener confidencialidad?</strong></td><td>Veracidad vs. No generar pánico</td><td>La comunicación de riesgo debe ser oportuna, veraz y calibrada. El RSI 2005 orienta hacia la transparencia responsable. El silencio puede ser más dañino que la verdad bien comunicada.</td></tr>
+      <tr><td><strong>¿Priorizar recursos escasos entre múltiples víctimas?</strong></td><td>Justicia vs. Equidad</td><td>La asignación debe basarse en criterios clínicos de reversibilidad y probabilidad de sobrevivencia, no en criterios sociales, económicos ni de origen.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="key-points" style="margin-top:2rem">
+    <div class="key-points-title">✦ RESPONSABILIDADES DEONTOLÓGICAS — Ley 266/1996</div>
+    <div class="key-point"><div class="kp-icon">●</div><div class="kp-text">Ejercer dentro del ámbito de su licencia y competencia, incluso bajo la presión del evento masivo.</div></div>
+    <div class="key-point"><div class="kp-icon">●</div><div class="kp-text">Notificar oportunamente a las autoridades sanitarias (SIVIGILA, INS) ante cualquier caso o patrón sospechoso. La omisión constituye una falla ética y legal de consecuencias colectivas.</div></div>
+    <div class="key-point"><div class="kp-icon">●</div><div class="kp-text">Proteger la confidencialidad de los pacientes y sus datos clínicos, incluso en el registro para SIVIGILA.</div></div>
+    <div class="key-point"><div class="kp-icon">●</div><div class="kp-text">Participar activamente en la evaluación post-evento desde una perspectiva ética: identificar si alguna decisión tomada bajo presión vulneró derechos.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ======= 16. CHECKLIST ======= -->
+<section class="section tab-section active" id="sec-checklist">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number">SECCIÓN 16</div>
+    <h2 class="sec-title">Checklist Interactivo — Competencias CIE Nivel I</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro">Instrumento de autoevaluación y verificación del desempeño de la enfermera generalista (Nivel I CIE) en situaciones de bioterrorismo, organizado según las etapas del Ciclo DEU.</p>
+  </div>
+
+  <div class="checklist-progress">
+    <div class="progress-text" id="progress-text">Progreso: 0 / 30 ítems completados</div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+  </div>
+
+  <div class="checklist-wrap" id="checklist-container"></div>
+
+  <div style="text-align:center;margin-top:2rem">
+    <button class="btn-primary" onclick="resetChecklist()">↺ Reiniciar Checklist</button>
+  </div>
+</div>
+</section>
+
+<!-- ======= BUSCADOR ======= -->
+<section class="section tab-section active" id="sec-buscar" style="background:var(--dark-purple)">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-number" style="color:rgba(196,163,90,0.8)">BÚSQUEDA</div>
+    <h2 class="sec-title" style="color:#F5EFE1">Buscador Interno del Protocolo</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-intro" style="color:rgba(245,239,225,0.7)">Busca cualquier término dentro del protocolo completo de bioterrorismo.</p>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+    <input type="text" class="search-input" id="searchInput" placeholder="Buscar: ántrax, EPP, triage, Neuman, SIVIGILA..." oninput="doSearch(this.value)">
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-logo"> Protocolo de Enfermería en Bioterrorismo</div>
+  <p class="footer-sub">Realizado por: Vanessa Ramírez Herrera · Brenda Lizbeth Hernández · Brenda Stefanie Liz Muñoz</p>
+  <p class="footer-sub" style="margin-top:.5rem">Basado en: CIE (2019) · Watson (2008) · Neuman · Nightingale · CDC · OMS RSI 2005 · Ley 266/1996 · Ley 1523/2012</p>
+  <p class="footer-sub" style="color:rgba(196,163,90,0.5);margin-top:1rem;font-size:.7rem">Universidad del Quindío · Facultad de Ciencias de la Salud · Armenia, Colombia · 2026</p>
+</footer>
+
+<!-- FLOAT TO TOP -->
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">↑</button>
+
+<script>
+// ── Utility ──
+function toggleAcc(bodyId, arrowId){
+  const b=document.getElementById(bodyId);
+  const a=arrowId?document.getElementById(arrowId):null;
+  if(!b)return;
+  b.classList.toggle('open');
+  if(a) a.textContent=b.classList.contains('open')?'▲':'▼';
+}
+function closeMobile(){document.getElementById('mobile-menu').classList.remove('open')}
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('toTop');
+  btn.classList.toggle('show',window.scrollY>400);
+});
+
+// ── DEU Circle ──
+const phaseData={
+  mit:{
+    color:'#1A6B3A',
+    label:'MITIGACIÓN',
+    emoji:'',
+    def:'Reducir o eliminar el impacto de la amenaza ANTES de que ocurra. La enfermera actúa sobre los determinantes físicos y organizacionales.',
+    teoria:'Nightingale — Teoría del Entorno: "Cuido el entorno para proteger al cuerpo." Watson — Caritas 7 (Aprendizaje transpersonal).',
+    acciones:[
+      'Mapeo de riesgos biológicos internos y evaluación de vulnerabilidades institucionales',
+      'Verificación de sistemas de aislamiento y áreas de contención disponibles',
+      'Revisión de equipos de protección individual (EPI) para agentes biológicos',
+      'Identificación de poblaciones vulnerables (inmunodeprimidos, embarazadas, adultos mayores)',
+      'Conocimiento y difusión de protocolos institucionales de respuesta ante eventos NRBQ',
+      'Articulación con SIVIGILA y sistemas de alerta temprana epidemiológica'
+    ],
+    ambitos:'CIE Ámbitos 1 y 4',
+    alerta:'Un entorno no controlado se convierte en el principal vector de diseminación del agente biológico. La mitigación es el primer acto de cuidado.'
+  },
+  pre:{
+    color:'#8C4A0A',
+    label:'PREPARACIÓN',
+    emoji:'',
+    def:'Organizar y entrenar los recursos humanos para una respuesta efectiva. La preparación no es un inventario frío: es la garantía de que la relación de cuidado no se interrumpa.',
+    teoria:'Watson — Caritas 1 y 7. Betty Neuman — Prevención Primaria: fortalecer la Línea de Defensa Flexible del sistema-persona/comunidad.',
+    acciones:[
+      'Participación en simulacros y ejercicios multidisciplinarios de respuesta ante eventos biológicos',
+      'Capacitación en reconocimiento de enfermedades por agentes de bioterrorismo Categoría A',
+      'Verificación de inventario funcional para 48–72 horas (insumos, medicamentos, vacunas, antídotos)',
+      'Educación comunitaria sobre reconocimiento de síntomas atípicos y rutas de notificación',
+      'Conocimiento actualizado de la cadena de mando institucional ante emergencias biológicas',
+      'Entrenamiento en uso correcto de EPI y procedimientos de donning/doffing (BSL 2, 3, 4)'
+    ],
+    ambitos:'CIE Ámbitos 1 y 2',
+    alerta:'Al preparar a la comunidad y al equipo de salud, la enfermera empodera a los sujetos. Cuanto más robusta la barrera, menor será el impacto del estresor biológico.'
+  },
+  res:{
+    color:'#7A1F14',
+    label:'RESPUESTA',
+    emoji:'',
+    def:'Salvar vidas, reducir el sufrimiento y contener la diseminación del agente biológico. "El Triage no es solo un color, es el primer contacto terapéutico."',
+    teoria:'Watson — Presencia Auténtica + Justicia Distributiva. Neuman — Prevención Secundaria: actuar sobre las Líneas de Resistencia internas.',
+    acciones:[
+      'Aplicación de Triage START adaptado a eventos de exposición biológica masiva',
+      'Activación de protocolos de aislamiento y contención según agente sospechoso',
+      'Implementación de barreras de bioseguridad y uso de EPI de nivel adecuado',
+      'Descontaminación de personas expuestas siguiendo la cadena de mando',
+      'Toma de muestras biológicas para confirmación diagnóstica (bajo supervisión especializada)',
+      'Primeros Auxilios Psicológicos: presencia auténtica, escucha activa, comunicación contenedora',
+      'Notificación inmediata a autoridades sanitarias (SIVIGILA, Secretaría de Salud, INS)',
+      'Administración de profilaxis o tratamiento específico según el agente biológico implicado'
+    ],
+    ambitos:'CIE Ámbitos 3, 4, 5, 6',
+    alerta:'EPP PRIMERO, SIEMPRE. La decisión de clasificar requiere juicio clínico riguroso bajo el principio del mayor bien para el mayor número.'
+  },
+  rec:{
+    color:'#1A4547',
+    label:'RECUPERACIÓN',
+    emoji:'',
+    def:'Restablecer el equilibrio del sistema hacia su estado óptimo o hacia un nuevo estado de equilibrio adaptado. La enfermera es RADAR CLÍNICO en la reconstitución.',
+    teoria:'Watson — Caritas 8 (Entorno de curación) + Caritas 2 (Fe y esperanza restaurada). Neuman — Prevención Terciaria (Reconstitución).',
+    acciones:[
+      'Vigilancia epidemiológica de eventos centinela: detección precoz de nuevos casos sospechosos',
+      'Seguimiento de esquemas de quimioprofilaxis o vacunación post-exposición',
+      'Evaluación psicosocial de víctimas, familias y personal de salud afectado',
+      'Apoyo en la rehumanización de espacios de atención y refugio temporal',
+      'Participación en la evaluación post-evento y elaboración de lecciones aprendidas',
+      'Gestión del bienestar del personal de enfermería expuesto: debriefing emocional, soporte psicológico'
+    ],
+    ambitos:'CIE Ámbitos 7 y 8',
+    alerta:'La esperanza es un acto clínico. La enfermera que acompaña el duelo ejerce el cuidado más profundo de su profesión. Vigilancia epidemiológica activa durante 60 días post-evento.'
+  }
+};
+
+function selectPhase(key){
+  const d=phaseData[key];
+  const detail=document.getElementById('deu-detail');
+  detail.innerHTML=`
+    <div class="deu-detail">
+      <h3>${d.emoji} ${d.label}</h3>
+      <h4>Definición y Objetivo</h4>
+      <p>${d.def}</p>
+      <h4>Fundamento Teórico</h4>
+      <p>${d.teoria}</p>
+      <h4>Acciones de Enfermería</h4>
+      <ul>${d.acciones.map(a=>`<li>${a}</li>`).join('')}</ul>
+      <h4>Ámbitos CIE</h4>
+      <p>${d.ambitos}</p>
+      <div style="background:rgba(138,201,38,0.1);border:1px solid rgba(138,201,38,0.4);border-radius:8px;padding:.8rem;margin-top:1rem">
+        <div style="font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:#5A8C0A;margin-bottom:.3rem">⚡ PUNTO CLAVE</div>
+        <p>${d.alerta}</p>
+      </div>
+    </div>`;
+}
+
+// ── Triage Modals ──
+function showTriage(color){
+  document.getElementById('modal-'+color).classList.add('show');
+}
+function hideTriage(e,id){
+  if(e.target===e.currentTarget) document.getElementById(id).classList.remove('show');
+}
+
+// ── Scenarios ──
+function showScenario(id,btn){
+  document.querySelectorAll('.scenario-panel').forEach(p=>p.classList.remove('show'));
+  document.querySelectorAll('.sc-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('show');
+  btn.classList.add('active');
+}
+
+// ── Institutions ──
+function showInst(id,btn){
+  document.querySelectorAll('.inst-panel').forEach(p=>p.classList.remove('show'));
+  document.querySelectorAll('.inst-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('show');
+  btn.classList.add('active');
+}
+
+// ── Checklist ──
+const checklistData=[
+  {group:'Ámbito 1 — Preparación y Planificación',items:[
+    'Mantiene conocimiento actualizado de los recursos, planes y procedimientos institucionales ante eventos biológicos.',
+    'Ha participado en al menos un simulacro de respuesta ante emergencia biológica o NRBQ en los últimos 12 meses.',
+    'Conoce la ubicación y el procedimiento de uso del EPP para agentes biológicos en su institución.',
+    'Identifica a la población vulnerable de su área de cobertura ante un eventual evento de bioterrorismo.',
+    'Conoce el protocolo de notificación al SIVIGILA ante caso sospechoso de agente biológico de uso intencional.',
+    'Tiene preparación personal (plan familiar) para sostener su respuesta profesional en una emergencia prolongada.'
+  ]},
+  {group:'Ámbito 2 — Comunicación',items:[
+    'Utiliza terminología correcta de bioseguridad y bioterrorismo al comunicarse con el equipo de salud.',
+    'Comunica de forma oportuna y precisa la información prioritaria ante un caso sospechoso de exposición biológica.',
+    'Demuestra habilidades básicas de comunicación de riesgo a la comunidad sin generar pánico colectivo.',
+    'Documenta adecuadamente los hallazgos clínicos y epidemiológicos del evento en los registros institucionales.',
+    'Sabe cómo activar la cadena de comunicación institucional (jefe de turno, epidemiología, dirección).'
+  ]},
+  {group:'Ámbito 3 — Gestión de Incidentes',items:[
+    'Describe la estructura nacional (SNGRD) y la cadena de mando institucional ante emergencias biológicas.',
+    'Conoce y aplica el plan específico institucional ante catástrofes, incluyendo su rol en eventos NRBQ.',
+    'Contribuye activamente en la evaluación posterior al evento con observaciones y experiencias.',
+    'Mantiene su práctica profesional dentro del ámbito de su licencia, incluso en equipos multidisciplinarios.'
+  ]},
+  {group:'Ámbito 4 — Seguridad y Protección',items:[
+    'Mantiene su seguridad personal durante el evento: usa EPP correcto y sigue protocolo de donning/doffing.',
+    'Adapta las prácticas básicas de control de infecciones según el recurso disponible y el agente sospechoso.',
+    'Aplica autoevaluación periódica de síntomas de exposición durante y después del evento.',
+    'Notifica de forma inmediata los posibles riesgos para su propia seguridad o la de sus colegas.'
+  ]},
+  {group:'Ámbito 5 — Evaluación / Triage',items:[
+    'Identifica y notifica síntomas o patrones clínicos inusuales que puedan indicar exposición a agente biológico.',
+    'Realiza el Triage START en menos de 60 segundos por paciente, evaluando: marcha, respiración, perfusión y estado mental.',
+    'Clasifica correctamente a las víctimas según los cuatro colores: Rojo, Amarillo, Verde, Negro.',
+    'Mantiene la evaluación continuada de los pacientes clasificados para detectar cambios en su condición.'
+  ]},
+  {group:'Ámbito 6 — Intervención',items:[
+    'Implementa primeros auxilios básicos con EPP adecuado en las personas en las proximidades inmediatas.',
+    'Aísla a personas/familias en riesgo de propagar el agente biológico, según protocolo institucional.',
+    'Brinda Primeros Auxilios Psicológicos: presencia auténtica, escucha activa, comunicación contenedora.'
+  ]},
+  {group:'Ámbito 7 — Recuperación',items:[
+    'Asiste a la organización a mantener o reanudar su funcionamiento durante y después del evento.',
+    'Realiza vigilancia epidemiológica activa de eventos centinela en el post-evento.',
+    'Participa en la evaluación psicosocial de víctimas, familias y personal de salud afectado.'
+  ]},
+  {group:'Ámbito 8 — Derecho y Ética',items:[
+    'Ejerce en el marco de las leyes (Ley 266/1996, Ley 1523/2012) y procedimientos institucionales aplicables.',
+    'Aplica el marco ético del CIE (Código Deontológico 2021) en las decisiones de triage y priorización.',
+    'Respeta la dignidad, privacidad y derechos de las víctimas durante todo el proceso de atención.'
+  ]}
+];
+
+let checkState={};
+function buildChecklist(){
+  const c=document.getElementById('checklist-container');
+  if(!c)return;
+  let totalItems=0;
+  checklistData.forEach((group,gi)=>{
+    const g=document.createElement('div');
+    g.className='checklist-group';
+    g.innerHTML=`<div class="checklist-group-title">✦ ${group.group}</div>`;
+    group.items.forEach((item,ii)=>{
+      const key=`${gi}-${ii}`;
+      totalItems++;
+      checkState[key]=false;
+      const row=document.createElement('div');
+      row.className='check-item';
+      row.id='ci-'+key;
+      row.innerHTML=`<input type="checkbox" id="cb-${key}" onchange="toggleCheck('${key}')"><label class="check-label" for="cb-${key}">${item}</label>`;
+      g.appendChild(row);
+    });
+    c.appendChild(g);
+  });
+  updateProgress();
+}
+function toggleCheck(key){
+  checkState[key]=!checkState[key];
+  const row=document.getElementById('ci-'+key);
+  const cb=document.getElementById('cb-'+key);
+  if(row) row.classList.toggle('checked',checkState[key]);
+  if(cb) cb.checked=checkState[key];
+  updateProgress();
+}
+function updateProgress(){
+  const total=Object.keys(checkState).length;
+  const done=Object.values(checkState).filter(Boolean).length;
+  const pct=total?Math.round(done/total*100):0;
+  const pt=document.getElementById('progress-text');
+  const pb=document.getElementById('progress-bar');
+  if(pt) pt.textContent=`Progreso: ${done} / ${total} ítems completados (${pct}%)`;
+  if(pb) pb.style.width=pct+'%';
+}
+function resetChecklist(){
+  Object.keys(checkState).forEach(k=>{
+    checkState[k]=false;
+    const row=document.getElementById('ci-'+k);
+    const cb=document.getElementById('cb-'+k);
+    if(row) row.classList.remove('checked');
+    if(cb) cb.checked=false;
+  });
+  updateProgress();
+}
+
+// Build Refugio checklist
+function buildRefugioChecks(){
+  const c=document.getElementById('refugio-checks');
+  if(!c)return;
+  const items=[
+    'El espacio garantiza al menos 3.5 m² por persona para evitar hacinamiento.',
+    'Cuenta con ventilación natural o mecánica adecuada que evita la acumulación de partículas aéreas.',
+    'Dispone de agua potable: mínimo 15 litros por persona por día.',
+    'Cuenta con unidades sanitarias: al menos 1 baño por cada 20 personas, diferenciado por género.',
+    'Tiene zona diferenciada para personas con síntomas sospechosos de exposición biológica.',
+    'Está alejado al menos 50 metros de fuentes de contaminación (aguas residuales, basuras).',
+    'Cuenta con iluminación suficiente para atención sanitaria nocturna.',
+    'Dispone de botiquín básico y EPP para el personal de salud asignado.',
+    'Tiene señalización clara de rutas de evacuación interna y zona de atención médica.',
+    'Cuenta con acceso para personas con movilidad reducida.'
+  ];
+  items.forEach((item,i)=>{
+    c.innerHTML+=`<div class="check-item" style="padding:.6rem 0;border-bottom:1px solid rgba(127,106,136,0.1)">
+      <input type="checkbox" id="rc${i}" style="width:18px;height:18px;accent-color:var(--btn)">
+      <label for="rc${i}" class="check-label">${item}</label>
+    </div>`;
+  });
+}
+
+// ── Search Data ──
+const searchContent = [
+  {section:'Concepto y Definición', sectionId:'sec-concepto', text:'bioterrorismo uso deliberado agentes biológicos bacterias virus toxinas armas intimidación terror CDC OMS'},
+  {section:'Clasificación Agentes', sectionId:'sec-agentes', text:'categoría A ántrax viruela plaga botulismo tularemia fiebre hemorrágica categoría B brucelosis ricina categoría C hantavirus nipah'},
+  {section:'Antecedentes Históricos', sectionId:'sec-concepto', text:'sitio kaffa tártaros peste bubónica viruela conquista América colonos Primera Guerra Mundial protocolo Ginebra URSS'},
+  {section:'Normatividad Internacional', sectionId:'sec-norma', text:'Convención Armas Biológicas CABT 1972 Protocolo Ginebra RSI 2005 OMS Resolución 1540 ONU Marco Sendai'},
+  {section:'Normatividad Nacional Colombia', sectionId:'sec-norma', text:'Ley 1523 2012 SNGRD UNGRD Resolución 3280 Minsalud Decreto 4107 Ley 266 1996 SIVIGILA'},
+  {section:'Teoría Nightingale', sectionId:'sec-epistemologia', text:'Nightingale entorno determinantes físicos cuidado preventivo mitigación barreras sanitarias'},
+  {section:'Teoría Watson', sectionId:'sec-epistemologia', text:'Watson cuidado humano caritas presencia auténtica triage primer contacto terapéutico'},
+  {section:'Modelo Neuman', sectionId:'sec-epistemologia', text:'Neuman sistema defensa prevención primaria secundaria terciaria reconstitución'},
+  {section:'Patrones Carper', sectionId:'sec-epistemologia', text:'Carper conocimiento empírico estético ético sociopolítico justicia distributiva'},
+  {section:'DEU Mitigación', sectionId:'deu', text:'mitigación riesgos biológicos vulnerabilidades EPP SIVIGILA'},
+  {section:'DEU Preparación', sectionId:'deu', text:'simulacros capacitación inventario 48 72 horas BSL'},
+  {section:'DEU Respuesta', sectionId:'deu', text:'triage START aislamiento bioseguridad descontaminación notificación'},
+  {section:'DEU Recuperación', sectionId:'deu', text:'vigilancia epidemiológica vacunación psicosocial lecciones aprendidas'},
+  {section:'Rol Enfermería CIE Nivel I', sectionId:'sec-rol', text:'primer respondiente triage EPP vigilancia epidemiológica notificación'},
+  {section:'Triage START', sectionId:'sec-triage', text:'respiración perfusión estado mental rojo amarillo verde negro'},
+  {section:'Escenario Ántrax', sectionId:'sec-escenarios', text:'ántrax bacillus anthracis esporas ciprofloxacino mortalidad'},
+  {section:'Escenario Fiebre Hemorrágica', sectionId:'sec-escenarios', text:'ébola traje hermético presión negativa donning doffing'},
+  {section:'Escenario Botulismo', sectionId:'sec-escenarios', text:'parálisis descendente antitoxina ventilación'},
+  {section:'Escenario Pánico Colectivo', sectionId:'sec-escenarios', text:'pánico psicosocial desinformación comunicación institucional'},
+  {section:'Instituciones', sectionId:'sec-instituciones', text:'OMS OPS INS UNGRD Cruz Roja bomberos'},
+  {section:'Humanitaria', sectionId:'sec-humanitaria', text:'humanidad neutralidad imparcialidad dignidad'},
+  {section:'Prehospitalaria', sectionId:'sec-prehospitalaria', text:'zona caliente tibia fría descontaminación EPP'},
+  {section:'Suministros', sectionId:'sec-suministros', text:'agua potable cloro EPP antibióticos donaciones'},
+  {section:'Evacuación', sectionId:'sec-evacuacion', text:'confinamiento evacuación rutas emergencia'},
+  {section:'Refugios', sectionId:'sec-refugios', text:'refugio ventilación saneamiento salud mental'},
+  {section:'Ética', sectionId:'sec-etica', text:'triage justicia distributiva autonomía bioética'},
+  {section:'Checklist', sectionId:'sec-checklist', text:'competencias EPP simulacro SIVIGILA'}
+];
+
+function doSearch(q){
+  const r=document.getElementById('searchResults');
+  if(!q||q.length<2){r.innerHTML='';return;}
+  const terms=q.toLowerCase().split(' ').filter(t=>t.length>1);
+  const hits=searchContent.filter(item=>terms.some(t=>item.text.toLowerCase().includes(t)||item.section.toLowerCase().includes(t)));
+  if(!hits.length){r.innerHTML='<p style="font-family:Lora,serif;color:rgba(245,239,225,0.5);font-size:.9rem">No se encontraron resultados. Intenta con otros términos.</p>';return;}
+  r.innerHTML=hits.map(h=>{
+    const highlighted=h.section.replace(new RegExp(terms.join('|'),'gi'),m=>`<mark>${m}</mark>`);
+    return `<div class="search-result-item" onclick="showTab('${h.sectionId}')">
+      <div class="sr-section">${highlighted}</div>
+      <div class="sr-text" style="color:rgba(245,239,225,0.6)">${h.text.substring(0,80)}...</div>
+    </div>`;
+  }).join('');
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded',()=>{
+  buildChecklist();
+  buildRefugioChecks();
+  // Smooth anchor active state
+  const navLinks=document.querySelectorAll('.nav-links a, .toc-item');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        navLinks.forEach(l=>{
+          const href=l.getAttribute('href');
+          if(href&&href===`#${entry.target.id}`){
+            l.style.color='var(--gold)';
+          } else {
+            l.style.color='';
+          }
+        });
+      }
+    });
+  },{threshold:.3});
+  document.querySelectorAll('section[id]').forEach(s=>observer.observe(s));
+});
+</script>
+<script>
+function showTab(id){
+
+  const sections = document.querySelectorAll('.tab-section');
+
+  sections.forEach(sec => {
+    sec.style.display = "none";
+  });
+
+  const target = document.getElementById(id);
+
+  if(target){
+    target.style.display = "flex"; // IMPORTANTE para tu hero (flex layout)
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  showTab("hero");
+});
+</script>
+</body>
+</html>
